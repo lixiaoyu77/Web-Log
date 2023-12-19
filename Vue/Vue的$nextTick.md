@@ -1,4 +1,4 @@
-Vue中的$nextTick作用？以及原理？
+### Vue中的$nextTick作用？以及原理？
 
 Vue.nextTick() 方法允许你在 DOM 更新完成之后执行特定代码。
 
