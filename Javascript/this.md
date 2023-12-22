@@ -45,4 +45,5 @@ const obj = {
 };
 const printValue = obj.getValue();
 printValue(); // 在这个例子中，this 指向 obj 对象，输出 42
+
 理解 this 的指向是 JavaScript 中一个重要的概念。它的具体值取决于函数调用的方式、函数是否在严格模式下以及函数是如何被创建的。
