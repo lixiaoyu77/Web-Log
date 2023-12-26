@@ -50,7 +50,7 @@ str instanceof String // false
 
 ```javascript
 Object.prototype.toString({})       // "[object Object]"
-Object.prototype.toString.call({})  // 同上结果，加上call也ok
+Object.prototype.toString.call({})  // 加上call也ok
 Object.prototype.toString.call(1)    // "[object Number]"
 Object.prototype.toString.call('1')  // "[object String]"
 Object.prototype.toString.call(true)  // "[object Boolean]"
