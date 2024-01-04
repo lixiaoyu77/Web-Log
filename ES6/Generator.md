@@ -2,7 +2,7 @@
 
 解决异步的手段：
 回调函数
-Promise 对象
+**Promise 对象**
 async/await
 **Generator 函数： ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同**
 
