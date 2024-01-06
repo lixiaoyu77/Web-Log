@@ -214,7 +214,7 @@ map.forEach(function(value, key, map) {
 ```
 ##  扩展WeakSet 和 WeakMap
 # WeakSet
-
+```javascript
 const ws = new WeakSet();
 WeakSet可以接受一个具有 Iterable接口的对象作为参数
 
@@ -239,8 +239,9 @@ let obj2={name:1}
 let ws=new WeakSet([obj1,obj2]); 
 console.log(ws) //WeakSet {{…}, {…}}
 WeakSet里面的引用只要在外部消失，它在 WeakSet里面的引用就会自动消失
-
-#WeakMap
+```
+# WeakMap
+```javascript
 WeakMap结构与Map结构类似，也是用于生成键值对的集合
 
 在API中WeakMap与Map有两个区别：
@@ -292,3 +293,4 @@ wm.set(key, obj);
 obj = null;
 wm.get(key)
 // Object {foo: 1}
+```
