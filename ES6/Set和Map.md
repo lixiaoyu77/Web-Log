@@ -166,32 +166,27 @@ map.clear()
 map.size // 0
 ```
 
-# 遍历
-Map结构原生提供三个遍历器生成函数和一个遍历方法：
-
-keys()：返回键名的遍历器
-values()：返回键值的遍历器
-entries()：返回所有成员的遍历器
-forEach()：遍历 Map 的所有成员
-遍历顺序就是插入顺序
-
+# 遍历  Map结构原生提供三个遍历器生成函数和一个遍历方法：
+**遍历顺序就是插入顺序**
+```javascript
 const map = new Map([
   ['F', 'no'],
   ['T',  'yes'],
 ]);
 
+// keys()：返回键名的遍历器
 for (let key of map.keys()) {
   console.log(key);
 }
 // "F"
 // "T"
-
+// values()：返回键值的遍历器
 for (let value of map.values()) {
   console.log(value);
 }
 // "no"
 // "yes"
-
+// entries()：返回所有成员的遍历器
 for (let item of map.entries()) {
   console.log(item[0], item[1]);
 }
@@ -212,13 +207,13 @@ for (let [key, value] of map) {
 // "F" "no"
 // "T" "yes"
 
+// forEach()：遍历 Map 的所有成员
 map.forEach(function(value, key, map) {
   console.log("Key: %s, Value: %s", key, value);
 });
-
-# 扩展WeakSet 和 WeakMap
-#WeakSet
-创建WeakSet实例
+```
+##  扩展WeakSet 和 WeakMap
+# WeakSet
 
 const ws = new WeakSet();
 WeakSet可以接受一个具有 Iterable接口的对象作为参数
