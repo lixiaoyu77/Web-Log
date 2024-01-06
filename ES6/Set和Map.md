@@ -97,21 +97,14 @@ let difference = new Set([...a].filter(x => !b.has(x)));
 ```
 
 
-二、Map
-Map类型是键值对的有序列表，而键和值都可以是任意类型
+## Map Map类型是键值对的有序列表，而键和值都可以是任意类型
 
-Map本身是一个构造函数，用来生成 Map 数据结构
-
+Map本身是一个**构造函数**，用来生成 Map 数据结构
+```javascript
 const m = new Map()
-#增删改查
-Map 结构的实例针对增删改查有以下属性和操作方法：
+```
+# 增删改查
 
-size 属性
-set()
-get()
-has()
-delete()
-clear()
 #size
 size属性返回 Map 结构的成员总数。
 
