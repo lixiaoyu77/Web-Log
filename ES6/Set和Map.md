@@ -104,40 +104,37 @@ Map本身是一个**构造函数**，用来生成 Map 数据结构
 const m = new Map()
 ```
 # 增删改查
-
-#size
-size属性返回 Map 结构的成员总数。
-
+# size size属性返回 Map 结构的成员总数。
+```javascript
 const map = new Map();
 map.set('foo', true);
 map.set('bar', false);
 
 map.size // 2
-#set()
-设置键名key对应的键值为value，然后返回整个 Map 结构
+```
 
-如果key已经有值，则键值会被更新，否则就新生成该键
-
-同时返回的是当前Map对象，可采用链式写法
-
+# set() 设置键名key对应的键值为value，然后返回整个 Map 结构
+**如果key已经有值，则键值会被更新，否则就新生成该键,同时返回的是当前Map对象，可采用链式写法**
+```javascript
 const m = new Map();
-
 m.set('edition', 6)        // 键是字符串
 m.set(262, 'standard')     // 键是数值
 m.set(undefined, 'nah')    // 键是 undefined
 m.set(1, 'a').set(2, 'b').set(3, 'c') // 链式操作
-#get()
-get方法读取key对应的键值，如果找不到key，返回undefined
+```
 
+# get() get方法读取key对应的键值，如果找不到key，返回undefined
+```javascript
 const m = new Map();
 
 const hello = function() {console.log('hello');};
 m.set(hello, 'Hello ES6!') // 键是函数
 
 m.get(hello)  // Hello ES6!
-#has()
-has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中
+```
 
+# has() has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中
+```javascript
 const m = new Map();
 
 m.set('edition', 6);
@@ -148,26 +145,28 @@ m.has('edition')     // true
 m.has('years')       // false
 m.has(262)           // true
 m.has(undefined)     // true
-#delete()
-delete方法删除某个键，返回true。如果删除失败，返回false
+```
 
+# delete() delete方法删除某个键，返回true。如果删除失败，返回false
+```javascript
 const m = new Map();
 m.set(undefined, 'nah');
 m.has(undefined)     // true
-
 m.delete(undefined)
 m.has(undefined)       // false
-#clear()
-clear方法清除所有成员，没有返回值
+```
 
+# clear() clear方法清除所有成员，没有返回值
+```javascript
 let map = new Map();
 map.set('foo', true);
 map.set('bar', false);
-
 map.size // 2
 map.clear()
 map.size // 0
-#遍历
+```
+
+# 遍历
 Map结构原生提供三个遍历器生成函数和一个遍历方法：
 
 keys()：返回键名的遍历器
@@ -216,7 +215,8 @@ for (let [key, value] of map) {
 map.forEach(function(value, key, map) {
   console.log("Key: %s, Value: %s", key, value);
 });
-#三、WeakSet 和 WeakMap
+
+# 扩展WeakSet 和 WeakMap
 #WeakSet
 创建WeakSet实例
 
