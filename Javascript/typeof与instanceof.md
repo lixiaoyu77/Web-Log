@@ -1,6 +1,5 @@
 ## typeof
-typeof 操作符返回一个字符串，表示未经计算的操作数的类型
-
+typeof 操作符返回一个字符串，表示未经计算的操作数的类型  
 ```javascript
 typeof 1 // 'number'
 typeof '1' // 'string'
@@ -14,6 +13,7 @@ typeof console // 'object'
 typeof console.log // 'function'
 ```
 **注意**
+--null 值表示一个空对象指针--
 typeof null为object，但这只是JavaScript 存在的一个悠久Bug，不代表null就是引用数据类型，并且null本身也不是对象
 
 ## instanceof
