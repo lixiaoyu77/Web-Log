@@ -42,7 +42,6 @@ console.log(3)  // 3
 # 流程分析
 JavaScript对各种场景的执行顺序
 ```javascript
-
 async function async1() {
     console.log('async1 start') // 2
     await async2()
