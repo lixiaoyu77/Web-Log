@@ -9,8 +9,7 @@ webpack做的事情，仅仅是分析出各种模块的依赖关系，然后形�
 当 webpack 碰到不识别的模块的时候，webpack 会在配置的中查找该文件解析规则
 
 关于配置loader的方式有三种：
+1. 配置方式(常用)：在 webpack.config.js文件中指定 loader
+2. 内联方式：在每个 import 语句中显式指定 loader
+3. CLI 方式：在 shell 命令中指定它们
 
-配置方式（推荐）：在 webpack.config.js文件中指定 loader
-内联方式：在每个 import 语句中显式指定 loader
-CLI 方式：在 shell 命令中指定它们
-#
