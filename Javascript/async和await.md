@@ -15,14 +15,14 @@ async function asyncF() {
 
 # await
 ```javascript
-正常情况下，await命令后面是一个 Promise对象，返回该对象的结果。如果不是 Promise对象，就直接返回对应的值
+// 正常情况下，await命令后面是一个 Promise对象，返回该对象的结果。如果不是 Promise对象，就直接返回对应的值
 async function f(){
     // 等同于
     // return 123
     return await 123
 }
 f().then(v => console.log(v)) // 123
-不管await后面跟着的是什么，await都会阻塞后面的代码
+// 不管await后面跟着的是什么，await都会阻塞后面的代码
 
 async function fn1 (){
     console.log(1)
