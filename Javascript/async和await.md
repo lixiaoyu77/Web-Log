@@ -8,15 +8,14 @@ async函数返回一个promise对象，下面两种方法是等效的
 function f() {
     return Promise.resolve('TEST');
 }
-
-// asyncF is equivalent to f!
+=
 async function asyncF() {
     return 'TEST';
 }
 ```
+
 # await
 正常情况下，await命令后面是一个 Promise对象，返回该对象的结果。如果不是 Promise对象，就直接返回对应的值
-
 async function f(){
     // 等同于
     // return 123
