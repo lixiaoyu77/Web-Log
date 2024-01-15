@@ -25,18 +25,17 @@ f().then(v => console.log(v)) // 123
 // 不管await后面跟着的是什么，await都会阻塞后面的代码
 
 async function fn1 (){
-    console.log(1)
-    await fn2()
-    console.log(2) // 阻塞
+    console.log(1) // 1
+    await fn2() 
+    console.log(2) // 阻塞,加入微任务队列 4
 }
 
 async function fn2 (){
-    console.log('fn2')
+    console.log('fn2')  // 2 
 }
 
 fn1()
-console.log(3)
-
+console.log(3)  // 3
 // 上面的例子中，await 会阻塞下面的代码（即加入微任务队列），先执行 async外面的同步代码，同步代码执行完，再回到 async 函数中，再执行之前阻塞的代码
 // 所以上述输出结果为：1，fn2，3，2
 ```
