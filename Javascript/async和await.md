@@ -3,8 +3,7 @@
 
 # async
 ```javascript
-async函数返回一个promise对象，下面两种方法是等效的
-
+// async函数返回一个promise对象，下面两种方法是等效的
 function f() {
     return Promise.resolve('TEST');
 }
@@ -15,6 +14,7 @@ async function asyncF() {
 ```
 
 # await
+```javascript
 正常情况下，await命令后面是一个 Promise对象，返回该对象的结果。如果不是 Promise对象，就直接返回对应的值
 async function f(){
     // 等同于
@@ -36,14 +36,13 @@ async function fn2 (){
 
 fn1()
 console.log(3)
-上面的例子中，await 会阻塞下面的代码（即加入微任务队列），先执行 async外面的同步代码，同步代码执行完，再回到 async 函数中，再执行之前阻塞的代码
 
-所以上述输出结果为：1，fn2，3，2
-
-#四、流程分析
-通过对上面的了解，我们对JavaScript对各种场景的执行顺序有了大致的了解
-
-这里直接上代码：
+// 上面的例子中，await 会阻塞下面的代码（即加入微任务队列），先执行 async外面的同步代码，同步代码执行完，再回到 async 函数中，再执行之前阻塞的代码
+// 所以上述输出结果为：1，fn2，3，2
+```
+# 流程分析
+JavaScript对各种场景的执行顺序
+```javascript
 
 async function async1() {
     console.log('async1 start')
@@ -65,6 +64,7 @@ new Promise(function (resolve) {
     console.log('promise2')
 })
 console.log('script end')
+```
 分析过程：
 
 执行整段代码，遇到 console.log('script start') 直接打印结果，输出 script start
