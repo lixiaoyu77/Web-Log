@@ -15,7 +15,7 @@
 
 2. 修改元素内容: 使用 innerHTML、innerText、textContent 等属性。
 
-3. 创建和删除元素: 使用 createElement、**appendChild**、removeChild 等方法。
+3. 创建和删除元素: 使用 createElement、**appendChild**（一个子节点添加到父节点的最后一个子节点）、removeChild 等方法。
 
 4. 修改元素属性: 使用 setAttribute、getAttribute、removeAttribute 等方法。
 
