@@ -4,9 +4,36 @@
 
 
 Webpack插件通过在整个构建过程中的关键点注入自定义逻辑，以扩展或修改Webpack的默认行为。这些关键点通常包括打包前、打包中、打包后等不同阶段，允许开发者在这些阶段进行定制化操作。
+# 特性
+其**本质**是一个具有apply方法javascript对象
+apply 方法会被 webpack compiler调用，并且在整个编译生命周期都可以访问 compiler对象
+```javascript
+const pluginName = 'ConsoleLogOnBuildWebpackPlugin'; //compiler hook 的 tap方法的第一个参数，应是驼峰式命名的插件名称
+
+class ConsoleLogOnBuildWebpackPlugin {
+  apply(compiler) {
+    compiler.hooks.run.tap(pluginName, (compilation) => {
+      console.log('webpack 构建过程开始！');
+    });
+  }
+}
+
+module.exports = ConsoleLogOnBuildWebpackPlugin;
+```
+整个编译生命周期钩子：
+entry-option ：初始化 option
+run
+compile： 真正开始的编译，在创建 compilation 对象之前
+compilation ：生成好了 compilation 对象
+make 从 entry 开始递归分析依赖，准备对每个模块进行 build
+after-compile： 编译 build 过程结束
+emit ：在将内存中 assets 内容写到磁盘文件夹之前
+after-emit ：在将内存中 assets 内容写到磁盘文件夹之后
+done： 完成所有的编译过程
+failed： 编译失败的时候
 
 # 常见Webpack插件：
-
+![插件](../img/plugin.png)
 HtmlWebpackPlugin: 用于自动生成 HTML 文件，并将构建的脚本注入到 HTML 中。
 
 MiniCssExtractPlugin: 用于提取和打包 CSS 文件。
