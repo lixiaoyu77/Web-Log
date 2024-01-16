@@ -53,11 +53,57 @@ module.exports = {
 
 1. **style-loader**: 将css添加到DOM的内联样式标签style里
 2. **css-loader** :允许将css文件通过require的方式引入，并返回css代码
-3. less-loader: 处理less
-4. sass-loader: 处理sass
+3. **less-loader**: 处理less
+4. **sass-loader**: 处理sass
 5. postcss-loader: 用postcss来处理CSS
 6. autoprefixer-loader: 处理CSS3属性前缀，已被弃用，建议直接使用postcss
 7. **file-loader**: 分发文件到output目录并返回相对路径
+```javascript
+// 把识别出的资源模块，移动到指定的输出⽬目录，并且返回这个资源在输出目录的地址(字符串)
+    npm install --save-dev file-loader
+    rules: [
+    ...,
+    {
+    test: /\.(png|jpe?g|gif)$/,
+        use: {
+        loader: "file-loader",
+        options: {
+            // placeholder 占位符 [name] 源资源模块的名称
+            // [ext] 源资源模块的后缀
+            name: "[name]_[hash].[ext]",
+            //打包后的存放位置
+            outputPath: "./images",
+            // 打包后文件的 url
+            publicPath: './images',
+        }
+        }
+    }
+    ]
+```
 8. **url-loader**: 和file-loader类似，但是当文件小于设定的limit时可以返回一个Data Url
+```javascript
+// 可以处理理 file-loader 所有的事情，但是遇到图片格式的模块，可以选择性的把图片转成 base64 格式的字符串，并打包到 js 中，对小体积的图片比较合适，大图片不合适。
+    npm install --save-dev url-loader
+    rules: [
+    ...,
+    {
+    test: /\.(png|jpe?g|gif)$/,
+        use: {
+        loader: "url-loader",
+        options: {
+            // placeholder 占位符 [name] 源资源模块的名称
+            // [ext] 源资源模块的后缀
+            name: "[name]_[hash].[ext]",
+            //打包后的存放位置
+            outputPath: "./images"
+            // 打包后文件的 url
+            publicPath: './images',
+            // 小于 100 字节转成 base64 格式
+            limit: 100
+        }
+        }
+    }
+    ]
+```
 9. html-minify-loader: 压缩HTML
 10. **babel-loader** :用babel来转换ES6文件到ES
