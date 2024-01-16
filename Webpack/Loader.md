@@ -51,12 +51,59 @@ module.exports = {
 
 常见的loader：
 
-1. **style-loader**: 将css添加到DOM的内联样式标签style里
-2. **css-loader** :允许将css文件通过require的方式引入，并返回css代码
+1. **css-loader** :允许将css文件通过require的方式引入，并返回css代码
+```javascript
+// 分析 css 模块之间的关系，并合成⼀个 css
+    npm install --save-dev css-loader
+    rules: [
+    ...,
+    {
+    test: /\.css$/,
+        use: {
+        loader: "css-loader",
+        options: {
+        url: true, // 启用/禁用 url() 处理
+        import: true, // 启用/禁用 @import 处理
+            sourceMap: false  // 启用/禁用 Sourcemap 
+            // Sourcemap 是一种用于将编译后的代码映射回原始源代码的技术
+        }
+        }
+    }
+    ]
+// 如果只通过css-loader加载文件，这时候页面代码设置的样式并没有生效,原因在于，css-loader只是负责将.css文件进行一个解析，而并不会将解析后的css插入到页面中，如果我们希望再完成插入style的操作，那么我们还需要另外一个loader，就是style-loader
+
+```
+
+2. **style-loader**: 将css添加到DOM的内联样式标签style里
+```javascript
+// 把 css-loader 生成的内容，用 style 标签挂载到页面的 head 中
+    npm install --save-dev style-loader
+    rules: [
+    ...,
+    {
+    test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+    }
+    ]
+// 同一个任务的 loader 可以同时挂载多个，处理顺序为：从右到左，从下往上
+```
+
 3. **less-loader**: 处理less
+```javascript
+// 开发中，我们也常常会使用less、sass、stylus预处理器编写css样式，使开发效率提高，这里需要使用less-loader
+    npm install less-loader -D
+    rules: [
+    ...,
+    {
+    test: /\.css$/,
+        use: ["style-loader", "css-loader","less-loader"]
+    }
+    ]
+```
 4. **sass-loader**: 处理sass
 5. postcss-loader: 用postcss来处理CSS
 6. autoprefixer-loader: 处理CSS3属性前缀，已被弃用，建议直接使用postcss
+
 7. **file-loader**: 分发文件到output目录并返回相对路径
 ```javascript
 // 把识别出的资源模块，移动到指定的输出⽬目录，并且返回这个资源在输出目录的地址(字符串)
@@ -80,6 +127,7 @@ module.exports = {
     }
     ]
 ```
+
 8. **url-loader**: 和file-loader类似，但是当文件小于设定的limit时可以返回一个Data Url
 ```javascript
 // 可以处理理 file-loader 所有的事情，但是遇到图片格式的模块，可以选择性的把图片转成 base64 格式的字符串，并打包到 js 中，对小体积的图片比较合适，大图片不合适。
@@ -105,5 +153,6 @@ module.exports = {
     }
     ]
 ```
+
 9. html-minify-loader: 压缩HTML
 10. **babel-loader** :用babel来转换ES6文件到ES
