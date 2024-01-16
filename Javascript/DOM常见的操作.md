@@ -9,17 +9,18 @@
 3. 文本节点（Text Nodes）: 元素中的文本内容也是节点。例如，<p>这是文本</p>中的“这是文本”。
 
 # 操作
-通过DOM，开发者可以使用一系列的方法和属性来操作文档。常见的 DOM 操作包括：
+**通过DOM，开发者可以使用一系列的方法和属性来操作文档**
+常见的 DOM 操作包括： 
+1. 查询元素: 使用 **getElementById**、getElementsByClassName、getElementsByTagName、getElementsByName 等方法。
 
-查询元素: 使用 getElementById、getElementsByClassName、getElementsByTagName 等方法。
+2. 修改元素内容: 使用 innerHTML、innerText、textContent 等属性。
 
-修改元素内容: 使用 innerHTML、innerText、textContent 等属性。
+3. 创建和删除元素: 使用 createElement、**appendChild**、removeChild 等方法。
 
-创建和删除元素: 使用 createElement、appendChild、removeChild 等方法。
+4. 修改元素属性: 使用 setAttribute、getAttribute、removeAttribute 等方法。
 
-修改元素属性: 使用 setAttribute、getAttribute、removeAttribute 等方法。
+5. 事件处理: 通过 DOM 可以为页面元素添加事件监听器，响应用户的交互行为。
 
-事件处理: 通过 DOM 可以为页面元素添加事件监听器，响应用户的交互行为。
 
 <!DOCTYPE html>
 <html>
