@@ -1,16 +1,16 @@
 # package.json 
 是 Node.js 项目的配置文件，其中包含了项目的元信息和配置信息。在前端工程实践中，package.json 扮演着重要的角色，用于管理项目的依赖、脚本、版本信息等
 
-# package.json 中可能包含的一些重要字段：
-name： 项目的名称，一般为小写字母，不包含空格。
+# package.json 中包含的一些重要字段：
+1. name： 项目的名称，一般为小写字母，不包含空格。
 "name": "my-frontend-app"
-version： 项目的版本号，遵循语义化版本规范（Semantic Versioning）。
+2. version： 项目的版本号，遵循语义化版本规范（Semantic Versioning）。
 "version": "1.0.0"
-description： 项目的简短描述，用于描述项目的目标或主要功能。
+3. description： 项目的简短描述，用于描述项目的目标或主要功能。
 "description": "A modern and responsive frontend application"
-main： 入口文件，指定项目的主要入口文件。
+4. main： 入口文件，指定项目的主要入口文件。
 "main": "index.js"
-scripts： 定义各种脚本命令，例如启动开发服务器、打包代码等。
+5. scripts： 定义各种脚本命令，例如启动开发服务器、打包代码等。
 "scripts": {
   "start": "webpack-dev-server --open",
   "build": "webpack --mode production"
