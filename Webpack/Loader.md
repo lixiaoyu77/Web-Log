@@ -39,16 +39,25 @@ module.exports = {
 ```
 
 # 特性
+1. loader 可以是同步的，也可以是异步的
+2. loader 运行在 Node.js 中，并且能够执行任何操作
+3. 除了常见的通过 package.json 的 main 来将一个 npm 模块导出为 loader，还可以在 module.rules 中使用 loader 字段直接引用一个模块
+4. 插件(plugin)可以为 loader 带来更多特性
+5. loader 能够产生额外的任意文件
+通过 loader 的预处理函数，为 JavaScript 生态系统提供更多能力。用户可以更加灵活地引入细粒度逻辑（压缩、打包、语言翻译）
 
-
-除此之外，loader的特性还有如下：
-
-loader 可以是同步的，也可以是异步的
-loader 运行在 Node.js 中，并且能够执行任何操作
-除了常见的通过 package.json 的 main 来将一个 npm 模块导出为 loader，还可以在 module.rules 中使用 loader 字段直接引用一个模块
-插件(plugin)可以为 loader 带来更多特性
-loader 能够产生额外的任意文件
-可以通过 loader 的预处理函数，为 JavaScript 生态系统提供更多能力。用户现在可以更加灵活地引入细粒度逻辑，例如：压缩、打包、语言翻译和更多其他特性
-
-#
 # 常见的loader
+在页面开发过程中，我们经常性加载除了js文件以外的内容，这时候我们就需要配置响应的loader进行加载
+
+常见的loader：
+
+1. **style-loader**: 将css添加到DOM的内联样式标签style里
+2. **css-loader** :允许将css文件通过require的方式引入，并返回css代码
+3. less-loader: 处理less
+4. sass-loader: 处理sass
+5. postcss-loader: 用postcss来处理CSS
+6. autoprefixer-loader: 处理CSS3属性前缀，已被弃用，建议直接使用postcss
+7. **file-loader**: 分发文件到output目录并返回相对路径
+8. **url-loader**: 和file-loader类似，但是当文件小于设定的limit时可以返回一个Data Url
+9. html-minify-loader: 压缩HTML
+10. **babel-loader** :用babel来转换ES6文件到ES
