@@ -44,20 +44,16 @@ onreadystatechange 事件用于监听服务器端的通信状态，主要监听�
 6. 将处理结果更新到 HTML页面中
 
 # 封装一个简单的ajax请求
-
 ```javascript
 //封装一个ajax请求
 function ajax(options) {
     //创建XMLHttpRequest对象
     const xhr = new XMLHttpRequest()
-
-
     //初始化参数的内容
     options = options || {}
     options.type = (options.type || 'GET').toUpperCase()
     options.dataType = options.dataType || 'json'
     const params = options.data
-
     //发送请求
     if (options.type === 'GET') {
         xhr.open('GET', options.url + '?' + params, true)
@@ -65,7 +61,6 @@ function ajax(options) {
     } else if (options.type === 'POST') {
         xhr.open('POST', options.url, true)
         xhr.send(params)
-
     //接收请求
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -78,8 +73,7 @@ function ajax(options) {
         }
     }
 }
-使用方式如下
-
+// 使用方式如下
 ajax({
     type: 'post',
     dataType: 'json',
