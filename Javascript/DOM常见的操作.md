@@ -11,7 +11,7 @@
 # 操作
 **通过DOM，开发者可以使用一系列的方法和属性来操作文档**
 常见的 DOM 操作包括： 
-1. 查询元素: 使用 **getElementById**、getElementsByClassName、getElementsByTagName、getElementsByName 等方法。
+1. 查询元素: 使用 **getElementById**、getElementsByClassName(对象)、getElementsByTagName、getElementsByName 等方法。 
 
 2. 修改元素内容: 使用 innerHTML、innerText、textContent 等属性。
 
