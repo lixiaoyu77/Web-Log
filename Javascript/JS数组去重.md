@@ -45,124 +45,73 @@ functon unique(arr) {
 }
 ```
 
-4. 利用filter()方法
+4. 利用filter()方法 + indexof() 
 filter() 方法一般用来过滤符合条件的数组，通过创建一个新的数组，检查指定数组中符合条件的所有元素。
-
 ```javascript
 function unique(arr) {
-
-return arr.filter((item,index, arr) => {
-
-return arr.indexOf(item) === index
-
-})
-
+    return arr.filter((item,index, arr) => {
+        return arr.indexOf(item) === index
+    })
 }
 ```
 
-
 5. 使用map方式
 ```javascript
-
 function uniqueFunc(arr, uniId){
-
-const res = new Map();
-
-return arr.filter((item) =>
-
-!res.has(item[uniId]) && res.set(item[uniId], 1));
-
+    const res = new Map();
+    return arr.filter((item) =>!res.has(item[uniId]) && res.set(item[uniId], 1));
 }
 ```
 
 6. 使用对象的特点
-对象是一种以键值对存储信息的结构，并且不能有重复的键。
-
+**对象是一种以键值对存储信息的结构，并且不能有重复的键**
 创建空对象，遍历数组，将数组中的值设为对象的属性，并给该属性赋初始值1，每出现一次，对应的属性值增加1，属性值对应的就是该元素出现的次数了
-
 ```javascript
-
-
 function unique(arr) {
-
-if (!Array.isArray(arr)) {
-
-console.log('type error!')
-
-return
-
+    if (!Array.isArray(arr)) {
+        console.log('type error!')
+        return
+    }
+    let res = [],
+    obj = {}
+    for (let i = 0; i < arr.length; i++) {
+        if (!obj[arr[i]]) {
+            res.push(arr[i])
+            obj[arr[i]] = 1
+        } else {
+            obj[arr[i]]++
+        }
+    } 
+    return res
 }
-
-let res = [],
-
-obj = {}
-
-for (let i = 0; i < arr.length; i++) {
-
-if (!obj[arr[i]]) {
-
-res.push(arr[i])
-
-obj[arr[i]] = 1
-
-} else {
-
-obj[arr[i]]++
-
-}
-
-} return res
-
-}
-
 ```
-
 7. 使用Set+Array.from() 
-ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
-
-解构赋值方法：
+**Set对象**：ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。。
+**Array.from() 方法**：对一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。
 
 ```javascript
-
+// 解构赋值方法：
 function unique(arr) { return [...new Set(arr)]
-
-Array.from方法：
-
-function unique(arr) {
-
-if (!Array.isArray(arr)) {
-
-console.log('type error!')
-
-return
-
-}
-
-return Array.from(new Set(arr))
-
-}
+```
+```javascript
+// Array.from方法：
+function unique(arr) { 
+    return Array.from(new Set(arr)) 
+    }
 ```
 
-
-8. 使用reduce
+8. 使用reduce+includers
 ```javascript
-
 function unique(arr) {
-
-return arr.reduce((pre, cur) => {
-
-!pre.includes(cur) && pre.push(cur)
-
-return pre
-
-}, [])
-
-}
+    return arr.reduce((pre, cur) => {
+        !pre.includes(cur) && pre.push(cur)     
+        return pre
+    }, [])
+    }
 ```
 
 9. 相邻元素去重
 这种方法首先调用了数组的排序方法sort()，然后根据排序后的结果进行遍历及相邻元素比对，如果相等则跳过改元素，直到遍历结束
-
 **sort()  number数组.sort((a, b) => a - b);升序 b-a降序** 
 ```javascript
     const students = [
@@ -176,28 +125,19 @@ return pre
 ```
 
 ```javascript
-
 function unique(arr) {
+    if (!Array.isArray(arr)) {
+        console.log('type error!')
+        return
+    }
 
-if (!Array.isArray(arr)) {
-
-console.log('type error!')
-
-return
-
-}
-
-arr = arr.sort() let res = []
-
-for (let i = 0; i < arr.length; i++) {
-
-if (arr[i] !== arr[i-1]) {
-
-res.push(arr[i])
-
-}
-
-} return res
-
-}
+    arr = arr.sort() 
+    let res = []
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== arr[i-1]) {
+            res.push(arr[i])
+        }
+    } 
+    return res
+    }
 ```
