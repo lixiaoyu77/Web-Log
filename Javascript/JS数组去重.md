@@ -1,6 +1,6 @@
 # 数组去重
 
-1. 使用双重for循环+splice方法
+1. 使用双重**for**循环+**splice**方法
 在早期双重for循环几乎是去重的唯一方式，但是双重for循环是比较笨拙的方法，它的时间复杂度是O(n^2)，如果数组长度很大，那么将会非常耗费内存。
 ```javascript
 //双重循环去重
@@ -18,77 +18,37 @@ for (let i=0,len = arr.length; i < len; i++) {
     return arr;
 };
 ```
-2. 利用数组的indexOf()方法
+2. 利用数组的**indexOf()**方法
 使用indexOf()，可以判断一个数组中是否包含某个值，如果存在则返回该元素在数组中的位置，如果不存在则返回-1。
 ```javascript
-
+// 利用indexOf检测元素在数组中第一次出现的位置是否和元素现在的位置相等，如果不等则说明该元素是重复元素
 functon unique(arr) {
-
-let res = []
-
-for (let i = 0; i < arr.length; i++) {
-
-if (res.indexOf(arr[i]) === -1) {
-
-res.push(arr[i])
-
-}
-
-}
-
-return res}
-
-
-
-利用indexOf检测元素在数组中第一次出现的位置是否和元素现在的位置相等，如果不等则说明该元素是重复元素
-
-function unique(arr) {
-
-if (!Array.isArray(arr)) {
-
-console.log('type error!')
-
-return
-
-}
-
-return Array.prototype.filter.call(arr, function(item, index){
-
-return arr.indexOf(item) === index;
-
-});
-
+    let res = []
+    for (let i = 0; i < arr.length; i++) {
+        if (res.indexOf(arr[i]) === -1) {
+            res.push(arr[i])
+        }
+    }
+    return res;
 }
 ```
-
-
-3. 利用includes()
+3. 利用数组的**includes()**方法，与indexof()相同
 ```javascript
-
 functon unique(arr) {
-
-let res = []
-
-for (let i = 0; i < arr.length; i++) {
-
-if (!res.includes(arr[i])) {
-
-res.push(arr[i])
-
+    let res = []
+    for (let i = 0; i < arr.length; i++) {
+        if (!res.includes(arr[i])) {
+            res.push(arr[i])
+        }
+    }
+    return res
 }
-
-}
-
-return res}
 ```
 
-
-
-4. 利用filter()
+4. 利用filter()方法
 filter() 方法一般用来过滤符合条件的数组，通过创建一个新的数组，检查指定数组中符合条件的所有元素。
 
 ```javascript
-
 function unique(arr) {
 
 return arr.filter((item,index, arr) => {
@@ -157,7 +117,7 @@ obj[arr[i]]++
 
 ```
 
-7. s使用set
+7. 使用Set+Array.from() 
 ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
 
 解构赋值方法：
@@ -200,9 +160,21 @@ return pre
 }
 ```
 
-
 9. 相邻元素去重
 这种方法首先调用了数组的排序方法sort()，然后根据排序后的结果进行遍历及相邻元素比对，如果相等则跳过改元素，直到遍历结束
+
+**sort()  number数组.sort((a, b) => a - b);升序 b-a降序** 
+```javascript
+    const students = [
+    { name: "Alice", score: 95 },
+    { name: "Bob", score: 80 },
+    { name: "Charlie", score: 90 }
+    ];
+    // 根据分数升序排序
+    students.sort((a, b) => a.score - b.score);
+    console.log(students);
+```
+
 ```javascript
 
 function unique(arr) {
