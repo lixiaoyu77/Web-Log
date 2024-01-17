@@ -18,8 +18,9 @@ for (let i=0,len = arr.length; i < len; i++) {
     return arr;
 };
 ```
-二、利用indexOf()
+2. 利用数组的indexOf()方法
 使用indexOf()，可以判断一个数组中是否包含某个值，如果存在则返回该元素在数组中的位置，如果不存在则返回-1。
+```javascript
 
 functon unique(arr) {
 
@@ -58,11 +59,11 @@ return arr.indexOf(item) === index;
 });
 
 }
+```
 
 
-
-三、利用includes()
-和indexOf()方法原理是一样的。
+3. 利用includes()
+```javascript
 
 functon unique(arr) {
 
@@ -79,16 +80,14 @@ res.push(arr[i])
 }
 
 return res}
+```
 
 
 
-四、利用filter()
+4. 利用filter()
 filter() 方法一般用来过滤符合条件的数组，通过创建一个新的数组，检查指定数组中符合条件的所有元素。
 
-代码实现
-使用indexOf方式
-
-
+```javascript
 
 function unique(arr) {
 
@@ -99,10 +98,11 @@ return arr.indexOf(item) === index
 })
 
 }
+```
 
 
-
-使用map方式
+5. 使用map方式
+```javascript
 
 function uniqueFunc(arr, uniId){
 
@@ -113,14 +113,14 @@ return arr.filter((item) =>
 !res.has(item[uniId]) && res.set(item[uniId], 1));
 
 }
+```
 
-
-
-五、使用对象的特点
+6. 使用对象的特点
 对象是一种以键值对存储信息的结构，并且不能有重复的键。
 
 创建空对象，遍历数组，将数组中的值设为对象的属性，并给该属性赋初始值1，每出现一次，对应的属性值增加1，属性值对应的就是该元素出现的次数了
 
+```javascript
 
 
 function unique(arr) {
@@ -155,13 +155,14 @@ obj[arr[i]]++
 
 }
 
+```
 
-
-六、使用set
+7. s使用set
 ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
 
 解构赋值方法：
 
+```javascript
 
 function unique(arr) { return [...new Set(arr)]
 
@@ -180,10 +181,12 @@ return
 return Array.from(new Set(arr))
 
 }
+```
 
 
+8. 使用reduce
+```javascript
 
-七、使用reduce
 function unique(arr) {
 
 return arr.reduce((pre, cur) => {
@@ -195,11 +198,12 @@ return pre
 }, [])
 
 }
+```
 
 
-
-八、相邻元素去重
+9. 相邻元素去重
 这种方法首先调用了数组的排序方法sort()，然后根据排序后的结果进行遍历及相邻元素比对，如果相等则跳过改元素，直到遍历结束
+```javascript
 
 function unique(arr) {
 
@@ -224,3 +228,4 @@ res.push(arr[i])
 } return res
 
 }
+```
