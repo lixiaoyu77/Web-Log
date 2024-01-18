@@ -33,48 +33,16 @@ XSS的**攻击目标**是为了盗取存储在客户端的cookie或者其他网�
 3. 用户浏览器接收到响应后解析执行，前端 JavaScript 取出 URL 中的恶意代码并执行
 4. 恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户的行为，调用目标网站接口执行攻击者指定的操作
 
-DOM 型 XSS 跟前两种 XSS 的区别：DOM 型 XSS 攻击中，取出和执行恶意代码由浏览器端完成，属于前端 JavaScript 自身的安全漏洞，而其他两种 XSS 都属于服务端的安全漏洞
+DOM型XSS跟前两种 XSS 的**区别**：
+DOM 型 XSS 攻击中，取出和执行恶意代码由**浏览器端**完成，属于前端 JavaScript 自身的安全漏洞
+而其他两种 XSS 都属于**服务端**的安全漏洞
 
 ## XSS的预防
-通过前面介绍，看到XSS攻击的两大要素：
+XSS攻击的两大要素：
+1. 攻击者提交而恶意代码
+2. 浏览器执行恶意代码
+针对第一个要素，在用户输入的过程中，过滤掉用户输入的恶劣代码，然后提交给后端，但是如果攻击者绕开前端请求，直接构造请求就不能预防了，而如果在后端写入数据库前，对输入进行过滤，然后把内容给前端，但是这个内容在不同地方就会有不同显示
 
-攻击者提交而恶意代码
-浏览器执行恶意代码
-针对第一个要素，我们在用户输入的过程中，过滤掉用户输入的恶劣代码，然后提交给后端，但是如果攻击者绕开前端请求，直接构造请求就不能预防了
-
-而如果在后端写入数据库前，对输入进行过滤，然后把内容给前端，但是这个内容在不同地方就会有不同显示
-
-例如：
-
-一个正常的用户输入了 5 < 7 这个内容，在写入数据库前，被转义，变成了 5 < 7
-
-在客户端中，一旦经过了 escapeHTML()，客户端显示的内容就变成了乱码( 5 < 7 )
-
-在前端中，不同的位置所需的编码也不同。
-
-当 5 < 7 作为 HTML 拼接页面时，可以正常显示：
-<div title="comment">5 &lt; 7</div>
-当 5 < 7 通过 Ajax 返回，然后赋值给 JavaScript 的变量时，前端得到的字符串就是转义后的字符。这个内容不能直接用于 Vue 等模板的展示，也不能直接用于内容长度计算。不能用于标题、alert 等
-可以看到，过滤并非可靠的，下面就要通过防止浏览器执行恶意代码：
-
-在使用 .innerHTML、.outerHTML、document.write() 时要特别小心，不要把不可信的数据作为 HTML 插到页面上，而应尽量使用 .textContent、.setAttribute() 等
-
-如果用 Vue/React 技术栈，并且不使用 v-html/dangerouslySetInnerHTML 功能，就在前端 render 阶段避免 innerHTML、outerHTML 的 XSS 隐患
-
-DOM 中的内联事件监听器，如 location、onclick、onerror、onload、onmouseover 等，<a> 标签的 href 属性，JavaScript 的 eval()、setTimeout()、setInterval() 等，都能把字符串作为代码运行。如果不可信的数据拼接到字符串中传递给这些 API，很容易产生安全隐患，请务必避免
-```javascript
-<!-- 链接内包含恶意代码 -->
-< a href=" ">1</ a>
-// setTimeout()/setInterval() 中调用恶意代码
-setTimeout("UNTRUSTED")
-setInterval("UNTRUSTED")
-
-// location 调用恶意代码
-location.href = 'UNTRUSTED'
-
-// eval() 中调用恶意代码
-eval("UNTRUSTED")
-```
 
 #  CSRF
 CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求
