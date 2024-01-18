@@ -46,81 +46,60 @@ background-break: bounding-box; 把盒之间的距离计算在内；
 background-break: each-box; 为每个盒子单独重绘背景
 ```
 ##  文字
-#word-wrap
-语法：word-wrap: normal|break-word
+#word-wrap  
+语法：word-wrap: normal|break-word    
+normal：使用浏览器默认的换行    
+break-all：允许在单词内换行    
 
-normal：使用浏览器默认的换行
-break-all：允许在单词内换行
-#text-overflow
-text-overflow设置或检索当当前行超过指定容器的边界时如何显示，属性有两个值选择：
-
+#text-overflow 设置或检索当当前行超过指定容器的边界时如何显示，属性有两个值选择：
 clip：修剪文本
-ellipsis：显示省略符号来代表被修剪的文本
-#text-shadow
-text-shadow可向文本应用阴影。能够规定水平阴影、垂直阴影、模糊距离，以及阴影的颜色
+ellipsis：显示省略符号来代表被修剪的文本  
 
-#text-decoration
-CSS3里面开始支持对文字的更深层次的渲染，具体有三个属性可供设置：
+#text-shadow 可向文本应用阴影。能够规定水平阴影、垂直阴影、模糊距离，以及阴影的颜色
 
-text-fill-color: 设置文字内部填充颜色
+#text-decoration  CSS3里面开始支持对文字的更深层次的渲染，具体有三个属性可供设置：  
+text-fill-color: 设置文字内部填充颜色  
+text-stroke-color: 设置文字边界填充颜色  
+text-stroke-width: 设置文字边界宽度  
 
-text-stroke-color: 设置文字边界填充颜色
-
-text-stroke-width: 设置文字边界宽度
-
-## 颜色
-css3新增了新的颜色表示方式rgba与hsla
-
+## 颜色 css3新增了新的颜色表示方式rgba与hsla
 rgba分为两部分，rgb为颜色值，a为透明度
-hala分为四部分，h为色相，s为饱和度，l为亮度，a为透明度
+hala分为四部分，h为色相，s为饱和度，l为亮度，a为透明度  
+
 ## transition 过渡
 transition属性可以被指定为一个或多个CSS属性的过渡效果，多个属性之间用逗号进行分隔，必须规定两项内容：
-
-过度效果
-持续时间
-语法如下：
-
-transition： CSS属性，花费时间，效果曲线(默认ease)，延迟时间(默认0)
-上面为简写模式，也可以分开写各个属性
-
+1. 过度效果
+2. 持续时间
+语法：transition： CSS属性，花费时间，效果曲线(默认ease)，延迟时间(默认0)
 transition-property: width; 
 transition-duration: 1s;
 transition-timing-function: linear;
 transition-delay: 2s;
+
 ## transform 转换
-transform属性允许你旋转，缩放，倾斜或平移给定元素
-
-transform-origin：转换元素的位置（围绕那个点进行转换），默认值为(x,y,z):(50%,50%,0)
-
-使用方式：
-
-transform: translate(120px, 50%)：位移
-transform: scale(2, 0.5)：缩放
-transform: rotate(0.5turn)：旋转
-transform: skew(30deg, 20deg)：倾斜
-##  animation 动画
-动画这个平常用的也很多，主要是做一个预设的动画。和一些页面交互的动画效果，结果和过渡应该一样，让页面不会那么生硬
-
-animation也有很多的属性
-
-animation-name：动画名称
-animation-duration：动画持续时间
-animation-timing-function：动画时间函数
-animation-delay：动画延迟时间
-animation-iteration-count：动画执行次数，可以设置为一个整数，也可以设置为infinite，意思是无限循环
-animation-direction：动画执行方向
-animation-paly-state：动画播放状态
-animation-fill-mode：动画填充模式
-## 渐变
-颜色渐变是指在两个颜色之间平稳的过渡，css3渐变包括
-
-linear-gradient：线性渐变
-background-image: linear-gradient(direction, color-stop1, color-stop2, ...);
-
-radial-gradient：径向渐变
-linear-gradient(0deg, red, green);
+transform属性允许你旋转，缩放，倾斜或平移给定元素  
+transform-origin：转换元素的位置（围绕那个点进行转换），默认值为(x,y,z):(50%,50%,0)    
+使用方式： 
+transform: translate(120px, 50%)：位移  
+transform: scale(2, 0.5)：缩放  
+transform: rotate(0.5turn)：旋转  
+transform: skew(30deg, 20deg)：倾斜  
+##  animation 动画 
+主要是做一个预设的动画。和一些页面交互的动画效果，结果和过渡应该一样，让页面不会那么生硬  
+animation也有很多的属性  
+animation-name：动画名称  
+animation-duration：动画持续时间  
+animation-timing-function：动画时间函数  
+animation-delay：动画延迟时间  
+animation-iteration-count：动画执行次数，可以设置为一个整数，也可以设置为infinite，意思是无限循环  
+animation-direction：动画执行方向  
+animation-paly-state：动画播放状态  
+animation-fill-mode：动画填充模式  
+## 渐变 颜色渐变是指在两个颜色之间平稳的过渡，css3渐变包括
+linear-gradient：线性渐变  
+background-image: linear-gradient(direction, color-stop1, color-stop2, ...);  
+radial-gradient：径向渐变  
+linear-gradient(0deg, red, green);  
 
 ## 其他
-关于css3其他的新特性还包括flex弹性布局、Grid栅格布局
-
-#
+关于css3其他的新特性还包括flex弹性布局、Grid栅格布局  
