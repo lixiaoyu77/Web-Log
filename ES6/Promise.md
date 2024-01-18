@@ -1,11 +1,11 @@
-### Promise
+# Promise
 **Promise 异步编程的一种解决方案，比传统的解决方案（回调函数）更加合理和更加强大**
-**状态**
+## 状态
 promise对象仅有三种状态
-pending（进行中）
-fulfilled（已成功）
-rejected（已失败）
-**特点**
+1. pending（进行中）
+2. fulfilled（已成功）
+3. rejected（已失败）
+## 特点
 1. 对象的状态不受外界影响，只有异步操作的结果，可以决定当前是哪一种状态
 2. 一旦状态改变（从pending变为fulfilled和从pending变为rejected），就不会再变，任何时候都可以得到这个结果
 3. 链式操作减低了编码难度
@@ -13,22 +13,17 @@ rejected（已失败）
 
 ## Promise对象是一个构造函数，用来生成Promise实例
 **接受一个函数作为参数，该函数的两个参数分别是resolve和reject**
+```javascript
 const promise = new Promise(function(resolve, reject) {});
-resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”
-reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”
+```
+**resolve函数**的作用是，将Promise对象的状态从“未完成”变为“成功”
+**reject函数**的作用是，将Promise对象的状态从“未完成”变为“失败”
 
 ## Promise实例方法
 
-# then()
-then是实例状态发生改变时的回调函数，第一个参数是resolved状态的回调函数，第二个参数是rejected状态的回调函数
-
+# then() 实例状态发生改变时的回调函数
+第一个参数是resolved状态的回调函数，第二个参数是rejected状态的回调函数
 then方法返回的是一个新的Promise实例，能够捕获上一个 Promise 对象的状态改变这使得在链式调用中可以持续进行 then 方法的调用。也就是**promise能链式书写的原因**
-
-getJSON("/posts.json").then(function(json) {
-  return json.post;
-}).then(function(post) {
-  // ...
-});
 
 # catch
 catch()方法是.then(null, rejection)或.then(undefined, rejection)的别名，用于指定发生错误时的回调函数
