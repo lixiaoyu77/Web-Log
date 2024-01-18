@@ -46,34 +46,14 @@ XSS攻击的两大要素：
 
 #  CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求
 
-利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目
-
-一个典型的CSRF攻击有着如下的流程：
-
-受害者登录a.com，并保留了登录凭证（Cookie）
-攻击者引诱受害者访问了b.com
-b.com 向 a.com 发送了一个请求：a.com/act=xx。浏览器会默认携带a.com的Cookie
-a.com接收到请求后，对请求进行验证，并确认是受害者的凭证，误以为是受害者自己发送的请求
-a.com以受害者的名义执行了act=xx
-攻击完成，攻击者在受害者不知情的情况下，冒充受害者，让a.com执行了自己定义的操作
-csrf可以通过get请求，即通过访问img的页面后，浏览器自动访问目标地址，发送请求
-
-同样，也可以设置一个自动提交的表单发送post请求，如下：
-```javascript
-<form action="http://bank.example/withdraw" method=POST>
-    <input type="hidden" name="account" value="xiaoming" />
-    <input type="hidden" name="amount" value="10000" />
-    <input type="hidden" name="for" value="hacker" />
-</form>
-<script> document.forms[0].submit(); </script> 
-```
-访问该页面后，表单会自动提交，相当于模拟用户完成了一次POST操作
-
-还有一种为使用a标签的，需要用户点击链接才会触发
-
-访问该页面后，表单会自动提交，相当于模拟用户完成了一次POST操作
-
-< a href="http://test.com/csrf/withdraw.php?amount=1000&for=hacker" taget="_blank">重磅消息！<a/>
+**利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目**
+一个典型的CSRF攻击有着如下的流程： 
+1. 受害者登录a.com，并保留了登录凭证（Cookie）
+2. 攻击者引诱受害者访问了b.com
+3. b.com 向 a.com 发送了一个请求：a.com/act=xx。浏览器会默认携带a.com的Cookie
+4. a.com接收到请求后，对请求进行验证，并确认是受害者的凭证，误以为是受害者自己发送的请求
+5. a.com以受害者的名义执行了act=xx
+6. 攻击完成，攻击者在受害者不知情的情况下，冒充受害者，让a.com执行了自己定义的操作
 
 ## CSRF的特点
 攻击一般发起在第三方网站，而不是被攻击的网站。被攻击的网站无法防止攻击发生
