@@ -1,4 +1,4 @@
-function debounce(func, wait) {
+function debounce(fn, wait) {
     let timeout;
 
     return function () {
@@ -7,7 +7,7 @@ function debounce(func, wait) {
 
         clearTimeout(timeout)
         timeout = setTimeout(function(){
-            func.apply(context, args)
+            fn.apply(context, args)
         }, wait);
     }
 }
