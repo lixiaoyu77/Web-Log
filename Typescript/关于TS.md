@@ -35,7 +35,7 @@ function Add(left: number, right: number): number {
   return left + right;
 }
 ```
-对于基本类型的批注是 number、bool 和 string，而弱或动态类型的结构则是 any 类型
+对于基本类型的批注是 number、bool 和 string，而弱或动态类型的结构则是 any 类型 
 
 ## 类型推断
 当类型没有给出时，TypeScript 编译器利用类型推断来推断类型，如下：
@@ -47,7 +47,7 @@ let str = "string";
 如果缺乏声明而不能推断出类型，那么它的类型被视作默认的动态 any 类型
 
 ## 接口
-接口简单来说就是用来描述对象的类型 数据的类型有 number、null、string 等数据格式，对象的类型就是用接口来描述的
+接口简单来说就是用来描述**对象的类型** 数据的类型有 number、null、string 等数据格式，对象的类型就是用接口来描述的
 ```js
 interface Person {
   name: string;
