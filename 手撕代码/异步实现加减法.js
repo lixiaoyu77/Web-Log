@@ -16,6 +16,8 @@ addAsync(2, 3)
   console.error(error);
 });
 
+
+// 使用 async/await
 async function performAddition() {
     try {
       const result = await addAsync(2, 3);
@@ -25,5 +27,5 @@ async function performAddition() {
     }
   }
   
-  // 调用使用 async/await 处理的异步加法
-  performAddition();
+// 调用使用 async/await 处理的异步加法
+performAddition();
