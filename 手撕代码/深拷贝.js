@@ -4,7 +4,11 @@ function deepCopy(obj, memo = new WeakMap()) {
     memo.set(obj, copyObj); // 将原对象和复制对象关联起来，防止循环引用
     for (let key in obj) {
         if (obj.hasOwnProperty(key)) {
-            copyObj[key] = deepCopy(obj[key], memo);
+            if (typeof obj[key] === 'object') {
+                copyObj[key] = deepCopy(obj[key], memo); // 递归
+            } else {
+                copyObj[key] = obj[key];
+            }
         }
     }
 
