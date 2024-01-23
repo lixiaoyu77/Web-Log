@@ -46,7 +46,9 @@ str instanceof String // false
 3. typeof 可以判断基础数据类型（null 除外），但是引用数据类型中，除了function 类型以外，其他的也无法判断
 
 ## 扩展
-如果需要通用检测数据类型，可以采用Object.prototype.toString，调用该方法，统一返回格式“[object Xxx]”的字符串
+如果需要通用检测数据类型，可以采用Object.prototype.toString  
+Object.prototype.toString.call() 是 Object 的原型方法  
+调用该方法，统一返回格式“[object Xxx]”的字符串
 
 ```javascript
 Object.prototype.toString({})       // "[object Object]"
