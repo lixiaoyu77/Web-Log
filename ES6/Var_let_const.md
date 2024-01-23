@@ -42,9 +42,9 @@ const c = 20 // Identifier 'c' has already been declared
 ```
 
 ### 初始化和赋值
-var：声明变量时会被自动初始化为 undefined，可以在之后重新赋值。
-let：声明变量时不会被自动初始化，可以在之后赋值。
-const：声明常量时必须立即初始化，并且不能在之后重新赋值。
+var：声明变量时会被自动初始化为 undefined，可以在之后重新赋值   
+let：声明变量时不会被自动初始化，可以在之后赋值  
+const：声明**常量**时必须立即初始化，并且不能在之后重新赋值  
 ```javascript
 var a;
 console.log(a); // undefined
