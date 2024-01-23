@@ -26,6 +26,9 @@ var a = 10;
 
 console.log(b); // ReferenceError: Cannot access 'b' before initialization
 let b = 20;
+
+console.log(c)  // Cannot access 'c' before initialization
+const c = 10
 ```
 ### 重复声明
 var：可以重复声明同一变量，不会报错  
