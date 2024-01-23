@@ -37,3 +37,11 @@ const arr = mergeSort(a1,a2);
 console.log(arr)
 
 // 使用方法 concat/sort
+function mergeSort1(arr1,arr2){
+    const arr = arr1.concat(arr2)
+    arr.sort((a,b)=>a-b)
+    return arr;
+}
+
+// const arr = mergeSort1(a1,a2);
+// console.log(arr)
