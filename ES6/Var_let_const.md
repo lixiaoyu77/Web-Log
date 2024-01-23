@@ -2,8 +2,8 @@
 
 # 区别
 ###  作用域
-var：var 声明的变量具有函数作用域，如果在函数内部声明，它在函数内有效；如果在函数外部声明，它在全局范围内有效。
-let 和 const：let 和 const 声明的变量具有块级作用域，它们只在包含它们的块内部有效。
+var：var 声明的变量具有函数作用域，如果在函数内部声明，它在函数内有效；如果在函数外部声明，它在全局范围内有效  
+let 和 const：let 和 const 声明的变量具有块级作用域，它们只在包含它们的块内部有效  
 ```javascript
 function example() {
   if (true) {
@@ -17,8 +17,8 @@ function example() {
 }
 ```
 ### 变量提升
-var：存在变量提升，可以在声明之前使用，但值为 undefined。
-let 和 const：也存在变量提升，但在声明之前使用会导致 ReferenceError。
+var：存在变量提升，可以在声明之前使用，但值为 undefined  
+let和const不存在变量提升，即它们所声明的变量一定要在声明后使用，否则报错
 ```javascript
 
 console.log(a); // undefined
@@ -28,15 +28,17 @@ console.log(b); // ReferenceError: Cannot access 'b' before initialization
 let b = 20;
 ```
 ### 重复声明
-var：可以重复声明同一变量，不会报错。
-let 和 const：不允许在同一作用域内重复声明同一变量，会导致 SyntaxError。
+var：可以重复声明同一变量，不会报错  
+let 和 const：不允许在同一作用域内重复声明同一变量，会导致 SyntaxError  
 ```javascript
-
 var x = 5;
 var x = 10; // 合法
 
 let y = 15;
 let y = 20; // SyntaxError: Identifier 'y' has already been declared
+
+const c = 10
+const c = 20 // Identifier 'c' has already been declared
 ```
 
 ### 初始化和赋值
@@ -53,6 +55,23 @@ console.log(b); // undefined
 b = 10;
 
 const c; // SyntaxError: Missing initializer in const declaration
+```
+
+###  修改声明的变量
+var和let可以  
+const声明一个只读的常量。一旦声明，常量的值就不能改变
+```javascript
+var a = 10
+a = 20
+console.log(a)  // 20
+
+let b = 10
+b = 20
+console.log(b)  // 20
+
+const c = 10
+c = 20
+console.log(c) // Uncaught TypeError: Assignment to constant variable
 ```
 
 ### 全局对象属性
