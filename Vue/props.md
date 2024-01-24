@@ -42,5 +42,9 @@ props:{name:String}
 </script>
 
 ```
-## 注意事项
+### 注意事项
 **props是只读的，Vue底层会监视对props的修改，如果进行了修改，就会发出警告**
+1. 不要定义无用的属性,会提示存在的属性是undefined
+2. props属性的优先级大于data
+3. 尽量不要直接修改props里面的属性的值
+4. props不能传入vue关键字(key,ref)
