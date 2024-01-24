@@ -1,7 +1,6 @@
 # Props
-功能：让组件接收外部传过来的数据
-
-接收数据
+功能：让组件接收外部传过来的数据  
+### 接收数据
 1. 第一种方式(只接收)
 ```js
 props:['name']  
@@ -20,4 +19,28 @@ props:{name:String}
       },
       }
 ```
+### 例
+```js
+// 父组件
+<Student name= 'leo' :age='18'>  //* bind这个value值bind在age上面，如果没有绑定，修改会直接拼接
+// 子组件
+<template>  
+<h1>{{name}}</h1>  
+<h1>{{age+1}}</h1>
+</template>
+<script>
+    export default{
+        name: 'student',
+        data(){
+            return{
+                name : 'leo',
+                age: 20,
+            }
+        },
+        props:['name','age']
+    }
+</script>
+
+```
+## 注意事项
 **props是只读的，Vue底层会监视对props的修改，如果进行了修改，就会发出警告**
