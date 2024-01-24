@@ -10,8 +10,7 @@ history 模式的实现，主要是 HTML5 标准发布的两个 API，pushState 
 3. 兼容性上，hash 可以支持低版本浏览器和 IE
 
 ## router 和route 的区别
-
-### $route 对象 当前的路由信息，包含了当前 URL 解析得到的信息（当前的路径，参数，query 对象...）  
+### $route 对象 当前的路由信息，包含了当前 URL 解析得到的信息（path，params，hash，query，fullPath，matched，name）  
 ```javascript
 $route.path：字符串，对应当前路由的路径，总是解析为绝对路径，如 "/foo/bar"。
 $route.params： 一个 key/value 对象，包含了 动态片段 和 全匹配片段，如果没有路由参数，就是一个空对象。
@@ -23,13 +22,13 @@ $route.name：当前路径名字
 $route.meta：路由元信息
 ```
 
-    $route 对象出现在多个地方:
+ $route 对象出现在多个地方:
 1. 组件内的 this.$route 和 route watcher 回调（监测变化处理）
 2. router.match(location) 的返回值
 3. scrollBehavior 方法的参数
 4. 导航钩子的参数，例如 router.beforeEach 导航守卫的钩子函数中，to 和 from 都是这个路由信息对象 
 
-### $router 对象是全局路由的实例，是 router 构造方法的实例 
+### $router 对象是全局路由的实例，是 router 构造方法的实例，包括了路由的跳转方法，钩子函数...
    $router 对象常用的方法有  
 1. push：向 history 栈添加一个新的记录
 2. go：页面路由跳转前进或者后退
@@ -104,9 +103,7 @@ watch: {
 ```
 2. window.location.hash 读取#值 window.location.hash 的值可读可写，读取来判断状态是否改变，写入时可以在不重载网页的前提下，添加一条历史访问记录。
 
-## $route 和$router 的区别
-$route 是“路由信息对象”，包括 path，params，hash，query，fullPath，matched，name 等路由信息参数
-$router 是“路由实例”对象包括了路由的跳转方法，钩子函数等。
+
 如何定义动态路由？如何获取传过来的动态参数？
 （1）param 方式
 
@@ -185,8 +182,8 @@ this.$router.push('/user?uname=' + jsmes)
 javascript
 通过$route.query 获取传递的值
 1
-Vue-router 路由钩子在生命周期的体现
-一、Vue-Router 导航守卫
+## Vue-router 路由钩子在生命周期的体现
+### Vue-Router 导航守卫
 有的时候，需要通过路由来进行一些操作，比如最常见的登录权限验证，当用户满足条件时，才让其进入导航，否则就取消跳转，并跳到登录页面让其登录。 为此有很多种方法可以植入路由的导航过程：全局的，单个路由独享的，或者组件级的
 
 全局路由钩子
