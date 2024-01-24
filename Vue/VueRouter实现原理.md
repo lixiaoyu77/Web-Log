@@ -4,30 +4,30 @@
 hash 模式后面 hash 值的变化，不会导致浏览器向服务器发出请求，浏览器不发出请求，就不会刷新页面；通过监听 hashchange 事件可以知道 hash 发生了哪些变化，然后根据 hash 变化来实现更新页面部分内容的操作。
 
 history 模式的实现，主要是 HTML5 标准发布的两个 API，pushState 和 replaceState，这两个 API 可以在改变 URL，但是不会发送请求。这样就可以popstate监听 url 变化来实现更新页面部分内容的操作。
-
 ### 两种模式的区别：
 1.  URL 的展示上，hash 模式有“#”，history 模式没有
 2. 刷新页面时，hash 模式可以正常加载到 hash 值对应的页面，而 history 没有处理的话，会返回 404，一般需要后端将所有页面都配置重定向到首页路由
 3. 兼容性上，hash 可以支持低版本浏览器和 IE
 
 ## router 和route 的区别
-$route 对象表示当前的路由信息，包含了当前 URL 解析得到的信息。包含当前的路径，参数，query 对象等。
+### $route 对象 当前的路由信息，包含了当前 URL 解析得到的信息（当前的路径，参数，query 对象...）  
 
+```javascript
 $route.path：字符串，对应当前路由的路径，总是解析为绝对路径，如 "/foo/bar"。
 $route.params： 一个 key/value 对象，包含了 动态片段 和 全匹配片段，如果没有路由参数，就是一个空对象。
-route.query.user == 1，如果没有查询参数，则是个空对象。
+$route.query.user == 1，如果没有查询参数，则是个空对象。
 $route.hash：当前路由的 hash 值 (不带 #) ，如果没有 hash 值，则为空字符串。
 $route.fullPath：完成解析后的 URL，包含查询参数和 hash 的完整路径。
 $route.matched：数组，包含当前匹配的路径中所包含的所有片段所对应的配置参数对象。
 $route.name：当前路径名字
 $route.meta：路由元信息
+```
 $route 对象出现在多个地方:
-
-组件内的 this.$route 和 route watcher 回调（监测变化处理）
-router.match(location) 的返回值
-scrollBehavior 方法的参数
+1. 组件内的 this.$route 和 route watcher 回调（监测变化处理）
+2. router.match(location) 的返回值
+3. scrollBehavior 方法的参数
 导航钩子的参数，例如 router.beforeEach 导航守卫的钩子函数中，to 和 from 都是这个路由信息对象。
-$router 对象是全局路由的实例，是 router 构造方法的实例。
+### $router 对象是全局路由的实例，是 router 构造方法的实例 
 
 $router 对象常用的方法有：
 
