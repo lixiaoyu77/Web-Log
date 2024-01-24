@@ -104,9 +104,8 @@ watch: {
 2. window.location.hash 读取#值 window.location.hash 的值可读可写，读取来判断状态是否改变，写入时可以在不重载网页的前提下，添加一条历史访问记录。
 
 
-如何定义动态路由？如何获取传过来的动态参数？
-（1）param 方式
-
+## 如何定义动态路由？如何获取传过来的动态参数？
+### param 方式
 配置路由格式：/router/:id
 传递的方式：在 path 后面跟上对应的值
 传递后形成的路径：/router/123
@@ -134,7 +133,7 @@ this.$router.push({name:'users',params:{uname:wade}})
 this.$router.push('/user/' + wade)
 3）参数获取 通过 $route.params.userid 获取传递的值
 
-（2）query 方式
+### query 方式
 
 配置路由格式：/router，也就是普通配置
 传递的方式：对象中使用 query 的 key 作为传递方式
@@ -181,7 +180,17 @@ this.$router.push('/user?uname=' + jsmes)
 
 javascript
 通过$route.query 获取传递的值
-1
+
+### params 和 query 的区别
+1. 用法  
+query 要用 path 来引入，params 要用 name 来引入，接收参数都是类似的，分别是 this.$route.query.name 和 this.$route.params.name  
+2. url 地址显示
+query 更加类似于 ajax 中 get 传参，params 则类似于 post，说的再简单一点，前者在浏览器地址栏中显示参数，后者则不显示  
+**注意** 
+query 刷新不会丢失 query 里面的数据  
+params 刷新会丢失 params 里面的数据
+
+
 ## Vue-router 路由钩子在生命周期的体现
 ### Vue-Router 导航守卫
 有的时候，需要通过路由来进行一些操作，比如最常见的登录权限验证，当用户满足条件时，才让其进入导航，否则就取消跳转，并跳到登录页面让其登录。 为此有很多种方法可以植入路由的导航过程：全局的，单个路由独享的，或者组件级的
@@ -255,7 +264,7 @@ beforeRouteEnter(to, from, next) {
     })
 }
 
-二、Vue 路由钩子在生命周期函数的体现
+Vue 路由钩子在生命周期函数的体现
 完整的路由导航解析流程（不包括其他生命周期）
 触发进入其他路由。
 调用要离开路由的组件守卫 beforeRouteLeave
@@ -306,13 +315,3 @@ activated：进入缓存组件，进入 a 的嵌套子组件（如果有的话�
 使用 history.pushState( /url ) ，无刷新页面，静态跳转
 引进 router ，然后使用 router.push( /url ) 来跳转，使用了 diff 算法，实现了按需加载，减少了 dom 的消耗  
 其实使用 router 跳转和使用history.pushState()没什么差别，vue-router(history模式)就是用了 history.pushState()
-
-
-## params 和 query 的区别
-1. 用法  
-query 要用 path 来引入，params 要用 name 来引入，接收参数都是类似的，分别是 this.$route.query.name 和 this.$route.params.name  
-2. url 地址显示
-query 更加类似于 ajax 中 get 传参，params 则类似于 post，说的再简单一点，前者在浏览器地址栏中显示参数，后者则不显示  
-**注意** 
-query 刷新不会丢失 query 里面的数据  
-params 刷新会丢失 params 里面的数据
