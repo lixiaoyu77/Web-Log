@@ -10,8 +10,8 @@ history 模式的实现，主要是 HTML5 标准发布的两个 API，pushState 
 3. 兼容性上，hash 可以支持低版本浏览器和 IE
 
 ## router 和route 的区别
-### $route 对象 当前的路由信息，包含了当前 URL 解析得到的信息（当前的路径，参数，query 对象...）  
 
+### $route 对象 当前的路由信息，包含了当前 URL 解析得到的信息（当前的路径，参数，query 对象...）  
 ```javascript
 $route.path：字符串，对应当前路由的路径，总是解析为绝对路径，如 "/foo/bar"。
 $route.params： 一个 key/value 对象，包含了 动态片段 和 全匹配片段，如果没有路由参数，就是一个空对象。
@@ -22,40 +22,42 @@ $route.matched：数组，包含当前匹配的路径中所包含的所有片段
 $route.name：当前路径名字
 $route.meta：路由元信息
 ```
-$route 对象出现在多个地方:
+
+    $route 对象出现在多个地方:
 1. 组件内的 this.$route 和 route watcher 回调（监测变化处理）
 2. router.match(location) 的返回值
 3. scrollBehavior 方法的参数
-导航钩子的参数，例如 router.beforeEach 导航守卫的钩子函数中，to 和 from 都是这个路由信息对象。
+4. 导航钩子的参数，例如 router.beforeEach 导航守卫的钩子函数中，to 和 from 都是这个路由信息对象 
+
 ### $router 对象是全局路由的实例，是 router 构造方法的实例 
+   $router 对象常用的方法有  
+1. push：向 history 栈添加一个新的记录
+2. go：页面路由跳转前进或者后退
+3. replace：替换当前的页面，不会向 history 栈添加一个新的记录
 
-$router 对象常用的方法有：
 
-push：向 history 栈添加一个新的记录
-go：页面路由跳转前进或者后退
-replace：替换当前的页面，不会向 history 栈添加一个新的记录
-vueRouter 有哪几种导航守卫？
+## vueRouter 有哪几种导航守卫？
+1. 全局前置/钩子：beforeEach、beforeR-esolve、afterEach
+2. 路由独享的守卫：beforeEnter
+3. 组件内的守卫：beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave
 
-全局前置/钩子：beforeEach、beforeR-esolve、afterEach
-路由独享的守卫：beforeEnter
-组件内的守卫：beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave
-解释一下 vueRouter 的完整的导航解析流程是什么
+## 解释 vueRouter 的完整的导航解析流程
 
-一次完整的导航解析流程如下：
+1. 导航被触发
+2. 在失活的组件里调用离开守卫
+3. 调用全局的 beforeEach 守卫
+4. 在重用的组件里调用 beforeRouteUpdate 守卫（2.2+）
+5. 在路由配置里调用 beforeEnter
+6. 解析异步路由组件
+7. 在被激活的组件里调用 beforeRouteEnter
+8. 调用全局的 beforeResolve 守卫（2.5+）
+9. 导航被确认
+10. 调用全局的 afterEach 钩子
+11. 触发 DOM 更新
+12. 用创建好的实例调用 beforeRouteEnter 守卫中传给 next 的回调函数
 
-导航被触发。
-在失活的组件里调用离开守卫。
-调用全局的 beforeEach 守卫。
-在重用的组件里调用 beforeRouteUpdate 守卫（2.2+）。
-在路由配置里调用 beforeEnter。
-解析异步路由组件。
-在被激活的组件里调用 beforeRouteEnter。
-调用全局的 beforeResolve 守卫（2.5+）。
-导航被确认。
-调用全局的 afterEach 钩子。
-触发 DOM 更新。
-用创建好的实例调用 beforeRouteEnter 守卫中传给 next 的回调函数。
-如何监听 pushstate 和 replacestate 的变化呢？
+
+## 如何监听 pushstate 和 replacestate 的变化呢？
 History.replaceState 和 pushState 不会触发 popstate 事件，所以我们可以通过在方法中创建一个新的全局事件来实现  pushstate 和 replacestate 变化的监听。
 
 具体做法为：
@@ -77,18 +79,8 @@ var _wr = function (type) {
 };
 history.pushState = _wr("pushState");
 history.replaceState = _wr("replaceState");
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
+
+
 javascript
 window.addEventListener("replaceState", function (e) {
   console.log("THEY DID IT AGAIN! replaceState 111111");
@@ -96,13 +88,8 @@ window.addEventListener("replaceState", function (e) {
 window.addEventListener("pushState", function (e) {
   console.log("THEY DID IT AGAIN! pushState 2222222");
 });
-1
-2
-3
-4
-5
-6
-路由模式
+
+
 路由模式决定了：
 
 路由从哪里获取访问路径
@@ -512,8 +499,3 @@ params 和 query 的区别
 url 地址显示：query 更加类似于 ajax 中 get 传参，params 则类似于 post，说的再简单一点，前者在浏览器地址栏中显示参数，后者则不显示
 
 注意：query 刷新不会丢失 query 里面的数据 params 刷新会丢失 params 里面的数据。
-
-Vue-router 导航守卫有哪些
-全局前置/钩子：beforeEach、beforeResolve、afterEach
-路由独享的守卫：beforeEnter
-组件内的守卫：beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave
