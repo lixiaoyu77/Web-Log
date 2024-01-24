@@ -63,31 +63,21 @@ $route.meta：路由元信息
 3. abstract：路由从内存中获取路径，改变路径也只是改动内存中的值。这种模式通常应用到非浏览器环境中  
 
 ## Vue-Router 的懒加载如何实现
-非懒加载：
-
-javascript
+### 非懒加载
+```javascript
 import List from "@/components/list.vue";
 const router = new VueRouter({
   routes: [{ path: "/list", component: List }],
 });
-1
-2
-3
-4
-（1）方案一(常用)：使用箭头函数+import 动态加载
-
-javascript
+```
+### 懒加载
+```javascript
+// 1.使用箭头函数+import 动态加载
 const List = () => import("@/components/list.vue");
 const router = new VueRouter({
   routes: [{ path: "/list", component: List }],
 });
-1
-2
-3
-4
-（2）方案二：使用箭头函数+require 动态加载
-
-javascript
+// 2.使用箭头函数+require 动态加载
 const router = new Router({
   routes: [
     {
@@ -96,45 +86,11 @@ const router = new Router({
     },
   ],
 });
-1
-2
-3
-4
-5
-6
-7
-8
-（3）方案三：使用 webpack 的 require.ensure 技术，也可以实现按需加载。 这种情况下，多个路由指定相同的 chunkName，会合并打包成一个 js 文件。
+```
 
-javascript
-// r就是resolve
-const List = r => require.ensure([], () => r(require('@/components/list')), 'list');
-// 路由也是正常的写法  这种是官方推荐的写的 按模块划分懒加载
-const router = new Router({
-  routes: [
-  {
-    path: '/list',
-    component: List,
-    name: 'list'
-  }
- ]
-}))
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-如何获取页面的 hash 变化
-（1）监听$route 的变化
-
-javascript
+## 如何获取页面的 hash 变化
+1. 监听$route 的变化
+```javascript
 // 监听,当路由发生变化的时候执行
 watch: {
   $route: {
@@ -145,21 +101,10 @@ watch: {
     deep: true
   }
 },
+```
+2. window.location.hash 读取#值 window.location.hash 的值可读可写，读取来判断状态是否改变，写入时可以在不重载网页的前提下，添加一条历史访问记录。
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-（2）window.location.hash 读取#值 window.location.hash 的值可读可写，读取来判断状态是否改变，写入时可以在不重载网页的前提下，添加一条历史访问记录。
-
-$route 和$router 的区别
+## $route 和$router 的区别
 $route 是“路由信息对象”，包括 path，params，hash，query，fullPath，matched，name 等路由信息参数
 $router 是“路由实例”对象包括了路由的跳转方法，钩子函数等。
 如何定义动态路由？如何获取传过来的动态参数？
@@ -179,16 +124,6 @@ javascript
    path: '/user/:userid',
    component: User,
 },
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
 2）路由跳转
 
 javascript
@@ -200,14 +135,6 @@ this.$router.push({name:'users',params:{uname:wade}})
 
 // 方法3：
 this.$router.push('/user/' + wade)
-1
-2
-3
-4
-5
-6
-7
-8
 3）参数获取 通过 $route.params.userid 获取传递的值
 
 （2）query 方式
@@ -235,23 +162,6 @@ profileClick(){
   });
 }
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
 2）跳转方法
 
 javascript
@@ -270,21 +180,6 @@ this.$router.push({ path: '/user', query:{ uname:james }})
 // 方法5：
 this.$router.push('/user?uname=' + jsmes)
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
 3）获取参数
 
 javascript
@@ -320,32 +215,14 @@ router.beforeEach((to, from, next) => {
     return next();
   }
 });
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
+
 afterEach （跳转之后滚动条回到顶部）
 javascript
 router.afterEach((to, from) => {
   // 跳转之后滚动条回到顶部
   window.scrollTo(0, 0);
 });
-1
-2
-3
-4
+
 单个路由独享钩子
 beforeEnter 如果不想全局配置守卫的话，可以为某些路由单独配置守卫，有三个参数 ∶ to、from、next
 
@@ -361,17 +238,7 @@ export default [
     },
   },
 ];
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
+
 组件内钩子
 beforeRouteUpdate、beforeRouteEnter、beforeRouteLeave
 
@@ -391,14 +258,6 @@ beforeRouteEnter(to, from, next) {
     })
 }
 
-1
-2
-3
-4
-5
-6
-7
-8
 二、Vue 路由钩子在生命周期函数的体现
 完整的路由导航解析流程（不包括其他生命周期）
 触发进入其他路由。
