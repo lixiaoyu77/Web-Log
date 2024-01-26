@@ -267,9 +267,9 @@ map.set(Symbol(), 2)
 map.set(null, 2)
 // TypeError: Invalid value used as weak map key
 ```
-WeakMap的键名所指向的对象，一旦不再需要，里面的键名对象和所对应的键值对会自动消失，不用手动删除引用
 
 #### 场景例子
+WeakMap的键名所指向的对象，一旦不再需要，里面的键名对象和所对应的键值对会自动消失，不用手动删除引用  
 在网页的 DOM 元素上添加数据，就可以使用WeakMap结构，当该 DOM 元素被清除，其所对应的WeakMap记录就会自动被移除
 ```js
 const wm = new WeakMap();
@@ -279,7 +279,7 @@ const element = document.getElementById('example');
 wm.set(element, 'some information');
 wm.get(element) // "some information"
 ```
-注意：WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用
+注意：WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用  
 
 下面代码中，键值obj会在WeakMap产生新的引用，当你修改obj不会影响到内部
 ```js
