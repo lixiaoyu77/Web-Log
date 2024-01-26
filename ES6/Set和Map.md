@@ -239,7 +239,7 @@ WeakSet里面的引用只要在外部消失，它在 WeakSet里面的引用就�
 
 ### WeakMap 
 WeakMap结构与Map结构类似，也是用于生成键值对的集合  
-
+键必须是对象。基本数据类型不能作为键。
 在API中WeakMap与Map有两个区别：
 1. 没有遍历操作的API
 2. 没有clear清空方法
