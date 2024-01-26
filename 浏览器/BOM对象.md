@@ -1,10 +1,8 @@
 # BOM (Browser Object Model)
 **浏览器对象模型**，提供了独立于内容与浏览器窗口进行交互的对象
-
 作用：跟浏览器做一些交互效果,比如如何进行页面的后退，前进，刷新，浏览器的窗口发生变化，滚动条的滚动，以及获取客户的一些信息如：浏览器品牌版本，屏幕分辨率
 
-
-# window
+##  window
 Bom的**核心对象**是window，它表示浏览器的一个实例
 在浏览器中，window对象有双重角色，即是浏览器窗口的一个接口，又是全局对象
 ``` javascript
@@ -38,7 +36,7 @@ window.close() //仅用于通过 window.open() 打开的窗口
 // 新创建的 window 对象有一个 opener 属性，该属性指向打开他的原始窗口对象
 ```
 
-# location
+## location
 url地址如下：
 http://foouser:barpassword@www.wrox.com:80/WileyCDA/?q=javascript#contents
 属性名 | 例子 | 说明 |
@@ -55,13 +53,13 @@ search|	?q=javascript|	url的查询字符串，通常为？后面的内容|
 **location.reload()**
 此方法可以重新刷新当前页面。这个方法会根据最有效的方式刷新页面，如果页面自上一次请求以来没有改变过，页面就会从浏览器缓存中重新加载
 
-# navigator
+## navigator
 navigator 对象主要用来获取浏览器的属性，区分浏览器类型。属性较多，且兼容性比较复杂
 
-# screen
+## screen
 保存的纯粹是客户端能力信息，也就是浏览器窗口外面的客户端显示器的信息，比如像素宽度和像素高度
 
-# history
+## history
 history对象主要用来**操作浏览器URL的历史记录**，可以通过参数向前，向后，或者向指定URL跳转
 常用属性：
 1. history.go()
