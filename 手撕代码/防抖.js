@@ -18,5 +18,4 @@ const debouncedFunction = debounce(function() {
 }, 200);
 
 // 调用防抖函数
-debouncedFunction();
 debouncedFunction(); // 在200毫秒内再次调用，将会重新计时
