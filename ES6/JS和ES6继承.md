@@ -70,7 +70,11 @@ Dog.prototype.constructor = Dog; // 修复构造函数指向
 const myDog = new Dog('Buddy', 'Labrador');
 myDog.eat();  // 输出: Buddy is eating.
 ```
+4. 原型式继承
+5. 寄生式继承
+6. 寄生组合式继承
 
+#
 
 # ES6 继承
 ES6引入了一种更方便,更简洁的继承方式，即**类继承**
