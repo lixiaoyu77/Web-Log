@@ -214,53 +214,50 @@ map.forEach(function(value, key, map) {
 ##  扩展WeakSet 和 WeakMap
 ### WeakSet
 ```javascript
-const ws = new WeakSet();
-WeakSet可以接受一个具有 Iterable接口的对象作为参数
-
+const ws = new WeakSet(); //WeakSet可以接受一个具有 Iterable接口的对象作为参数
 const a = [[1, 2], [3, 4]];
 const ws = new WeakSet(a);
 // WeakSet {[1, 2], [3, 4]}
+```
 在API中WeakSet与Set有两个区别：
-
-没有遍历操作的API
-没有size属性
-WeakSet只能成员只能是引用类型，而不能是其他类型的值
-
+1. 没有遍历操作的API
+2. 没有size属性
+3. WeakSet成员只能是引用类型，而不能是其他类型的值
+```js
 let ws=new WeakSet();
-
 // 成员不是引用类型
 let weakSet=new WeakSet([2,3]);
 console.log(weakSet) // 报错
-
 // 成员为引用类型
 let obj1={name:1}
 let obj2={name:1}
 let ws=new WeakSet([obj1,obj2]); 
 console.log(ws) //WeakSet {{…}, {…}}
-WeakSet里面的引用只要在外部消失，它在 WeakSet里面的引用就会自动消失
 ```
+WeakSet里面的引用只要在外部消失，它在 WeakSet里面的引用就会自动消失
 
-### WeakMap
-```javascript
-WeakMap结构与Map结构类似，也是用于生成键值对的集合
+
+### WeakMap 
+WeakMap结构与Map结构类似，也是用于生成键值对的集合  
 
 在API中WeakMap与Map有两个区别：
+1. 没有遍历操作的API
+2. 没有clear清空方法
 
-没有遍历操作的API
-没有clear清空方法
+```javascript
 // WeakMap 可以使用 set 方法添加成员
 const wm1 = new WeakMap();
 const key = {foo: 1};
 wm1.set(key, 2);
 wm1.get(key) // 2
 
-// WeakMap 也可以接受一个数组，
-// 作为构造函数的参数
+// WeakMap 也可以接受一个数组，作为构造函数的参数
 const k1 = [1, 2, 3];
 const k2 = [4, 5, 6];
 const wm2 = new WeakMap([[k1, 'foo'], [k2, 'bar']]);
 wm2.get(k2) // "bar"
-WeakMap只接受对象作为键名（null除外），不接受其他类型的值作为键名
+
+// WeakMap只接受对象作为键名（null除外），不接受其他类型的值作为键名
 
 const map = new WeakMap();
 map.set(1, 2)
@@ -269,22 +266,23 @@ map.set(Symbol(), 2)
 // TypeError: Invalid value used as weak map key
 map.set(null, 2)
 // TypeError: Invalid value used as weak map key
+```
 WeakMap的键名所指向的对象，一旦不再需要，里面的键名对象和所对应的键值对会自动消失，不用手动删除引用
 
-举个场景例子：
-
+#### 场景例子
 在网页的 DOM 元素上添加数据，就可以使用WeakMap结构，当该 DOM 元素被清除，其所对应的WeakMap记录就会自动被移除
-
+```js
 const wm = new WeakMap();
 
 const element = document.getElementById('example');
 
 wm.set(element, 'some information');
 wm.get(element) // "some information"
+```
 注意：WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用
 
 下面代码中，键值obj会在WeakMap产生新的引用，当你修改obj不会影响到内部
-
+```js
 const wm = new WeakMap();
 let key = {};
 let obj = {foo: 1};
