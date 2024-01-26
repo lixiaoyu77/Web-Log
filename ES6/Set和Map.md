@@ -1,4 +1,4 @@
-## Set是一种叫做集合的数据结构，Map是一种叫做字典的数据结构
+# Set是一种叫做集合的数据结构，Map是一种叫做字典的数据结构
 什么是集合？什么又是字典？
 **集合**
 是由一堆无序的、相关联的，且不重复的内存结构【数学中称为元素】组成的组合
@@ -18,29 +18,27 @@ Set本身是一个构造函数，用来生成 Set 数据结构
 const s = new Set();
 ```
 
-# Set的实例增删改查
-# add() 添加某个值，返回 Set 结构本身
+### Set的实例增删改查
 
+#### add() 添加某个值，返回 Set 结构本身
 **当添加实例中已经存在的元素，set不会进行处理添加**
 ```javascript
 s.add(1).add(2).add(2); // 2只被添加了一次
 ```
-# delete() 删除某个值，返回一个布尔值，表示删除是否成功
+#### delete() 删除某个值，返回一个布尔值，表示删除是否成功
 ```javascript
 s.delete(1)
 ```
 
-# has() 返回一个布尔值，判断该值是否为Set的成员
+#### has() 返回一个布尔值，判断该值是否为Set的成员
 ```javascript
 s.has(2)
 ```
-# clear() 清除所有成员，没有返回值
+#### clear() 清除所有成员，没有返回值
 ```javascript
 s.clear()
 ```
 # Set实例遍历的方法有如下：
-
-
 keys()：返回键名的遍历器
 values()：返回键值的遍历器
 entries()：返回键值对的遍历器
@@ -70,7 +68,8 @@ let set = new Set([1, 4, 9]);
 set.forEach((value, key) => console.log(key + ' : ' + value))
 // 1 : 1 4 : 4 9 : 9
 ```
-# 扩展运算符和Set 结构相结合实现数组或字符串去重
+
+#### 扩展运算符和Set 结构相结合实现数组或字符串去重
 ```javascript
 // 数组
 let arr = [3, 5, 2, 2, 5, 5];
@@ -80,7 +79,7 @@ let str = "352255";
 let unique = [...new Set(str)].join(""); // "352"
 ```
 
-# 实现并集、交集、和差集
+#### 实现并集、交集、和差集
 ```javascript
 let a = new Set([1, 2, 3]);
 let b = new Set([4, 3, 2]);
@@ -102,17 +101,17 @@ Map本身是一个**构造函数**，用来生成 Map 数据结构
 ```javascript
 const m = new Map()
 ```
-# 增删改查
-# size size属性返回 Map 结构的成员总数。
+### 增删改查
+
+#### size size属性返回 Map 结构的成员总数。
 ```javascript
 const map = new Map();
 map.set('foo', true);
 map.set('bar', false);
-
 map.size // 2
 ```
 
-# set() 设置键名key对应的键值为value，然后返回整个 Map 结构
+#### set() 设置键名key对应的键值为value，然后返回整个 Map 结构
 **如果key已经有值，则键值会被更新，否则就新生成该键,同时返回的是当前Map对象，可采用链式写法**
 ```javascript
 const m = new Map();
@@ -122,7 +121,7 @@ m.set(undefined, 'nah')    // 键是 undefined
 m.set(1, 'a').set(2, 'b').set(3, 'c') // 链式操作
 ```
 
-# get() get方法读取key对应的键值，如果找不到key，返回undefined
+#### get() get方法读取key对应的键值，如果找不到key，返回undefined
 ```javascript
 const m = new Map();
 
@@ -132,7 +131,7 @@ m.set(hello, 'Hello ES6!') // 键是函数
 m.get(hello)  // Hello ES6!
 ```
 
-# has() has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中
+#### has() has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中
 ```javascript
 const m = new Map();
 
@@ -146,7 +145,7 @@ m.has(262)           // true
 m.has(undefined)     // true
 ```
 
-# delete() delete方法删除某个键，返回true。如果删除失败，返回false
+#### delete() delete方法删除某个键，返回true。如果删除失败，返回false
 ```javascript
 const m = new Map();
 m.set(undefined, 'nah');
@@ -155,7 +154,7 @@ m.delete(undefined)
 m.has(undefined)       // false
 ```
 
-# clear() clear方法清除所有成员，没有返回值
+#### clear() clear方法清除所有成员，没有返回值
 ```javascript
 let map = new Map();
 map.set('foo', true);
@@ -165,7 +164,7 @@ map.clear()
 map.size // 0
 ```
 
-# 遍历  Map结构原生提供三个遍历器生成函数和一个遍历方法：
+### 遍历  Map结构原生提供三个遍历器生成函数和一个遍历方法：
 **遍历顺序就是插入顺序**
 ```javascript
 const map = new Map([
@@ -211,8 +210,9 @@ map.forEach(function(value, key, map) {
   console.log("Key: %s, Value: %s", key, value);
 });
 ```
+
 ##  扩展WeakSet 和 WeakMap
-# WeakSet
+### WeakSet
 ```javascript
 const ws = new WeakSet();
 WeakSet可以接受一个具有 Iterable接口的对象作为参数
@@ -239,7 +239,8 @@ let ws=new WeakSet([obj1,obj2]);
 console.log(ws) //WeakSet {{…}, {…}}
 WeakSet里面的引用只要在外部消失，它在 WeakSet里面的引用就会自动消失
 ```
-# WeakMap
+
+### WeakMap
 ```javascript
 WeakMap结构与Map结构类似，也是用于生成键值对的集合
 
