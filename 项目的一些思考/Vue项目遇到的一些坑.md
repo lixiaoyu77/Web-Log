@@ -1,12 +1,83 @@
 # Vue项目中遇到的一些坑及解决方案
 
 1. 响应式数据更新问题：
+如果修改了对象的属性或数组的元素，但界面没有更新，可能是因为 Vue 无法检测到这样的变化  
+使用 **Vue.set** 或者 **Object.assign** 来触发响应式更新  
+```vue
+<template>
+  <div>
+    <p>{{ user.name }}</p>
+    <button @click="changeUserName">Change Name</button>
+  </div>
+</template>
 
-如果修改了对象的属性或数组的元素，但界面没有更新，可能是因为 Vue 无法检测到这样的变化。可以使用 Vue.set 或者 Object.assign 来触发响应式更新。
+<script>
+export default {
+  data() {
+    return {
+      user: {
+        name: 'John',
+        age: 25,
+      },
+    };
+  },
+  methods: {
+    changeUserName() {
+      // 不好的例子，Vue 无法追踪变动
+      // this.user.name = 'Doe';
+
+      // 好的例子，使用 Vue.set
+      // Vue.set(this.user, 'name', 'Doe');
+
+      // 或者使用 Object.assign
+      this.user = Object.assign({}, this.user, { name: 'Doe' });
+    },
+  },
+};
+</script>
+
+```
 
 2. 异步更新导致的问题：
+使用异步代码（例如定时器或 Promise）修改数据时，Vue 可能无法即时响应更新。
+使用 this.$nextTick 来确保在 DOM 更新后执行操作。
+```vue
+<template>
+  <div>
+    <p>{{ message }}</p>
+    <button @click="updateMessage">Update Message</button>
+  </div>
+</template>
 
-当使用异步代码（例如定时器或 Promise）修改数据时，Vue 可能无法即时响应更新。可以使用 this.$nextTick 来确保在 DOM 更新后执行操作。
+<script>
+export default {
+  data() {
+    return {
+      message: 'Hello, Vue!',
+    };
+  },
+  methods: {
+    updateMessage() {
+      this.message = 'Updated Message';
+
+      // 使用 $nextTick 来确保 DOM 已经更新
+      this.$nextTick(() => {
+        // 在 DOM 更新后执行的操作
+        console.log('DOM 已更新');
+        this.doAfterDomUpdate();
+      });
+    },
+    doAfterDomUpdate() {
+      // 在 DOM 更新后执行的具体操作
+      // 可以获取更新后的 DOM 元素
+      const updatedElement = document.querySelector('p');
+      console.log('更新后的 DOM 元素:', updatedElement);
+    },
+  },
+};
+</script>
+
+```
 
 3. 事件处理函数中的 this 丢失：
 
