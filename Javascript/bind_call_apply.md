@@ -41,7 +41,6 @@ call 方法允许你调用一个函数，显式设置函数执行时的 this 值
 ```js
 function.call(thisValue, arg1, arg2, ...);
 ```
-
 ```javascript
 const printName = function(greeting) {
   console.log(greeting + ' ' + this.name);
