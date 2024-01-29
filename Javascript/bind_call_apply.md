@@ -70,7 +70,9 @@ fn.call(undefined,[1,2]); // this指向window
 ## bind
 bind方法和call很相似，第一参数也是this的指向，后面传入的也是一个参数列表(但是这个参数列表可以分多次传入)
 
-bind 不会立即调用函数，而是返回一个**新函数**。这个新函数可以稍后调用，并且它的 this 值会保持绑定的值     
+bind 不会立即调用函数，而是返回一个**新函数**。这个新函数可以稍后调用，并且它的 this 值会保持绑定的值   
+
+扩展：如果是箭头函数，则无法改变this，只能改变参数  
 ```js 
 newFunction = originalFunction.bind(thisValue); 
 ```
@@ -107,18 +109,16 @@ bind是返回绑定this之后的函数，apply、call 则是立即执行
 3. 兼容new关键字
 
 ```javascript
-Function.prototype.myBind = function (context) {
-    // 判断调用对象是否为函数
-    if (typeof this !== "function") {
-        throw new TypeError("Error");
-    }
-    // 获取参数
-    const args = [...arguments].slice(1),
-          fn = this;
+Function.prototype.myBind = function (context, ...bindArgs) {
+    // context 是 bind 传入的 this
+    // bindArgs 是 bind 传入的各个参数
 
-    return function Fn() {
-        // 根据调用方式，传入不同绑定值
-        return fn.apply(this instanceof Fn ? new fn(...arguments) : context, args.concat(...arguments)); 
+    const self = this // 当前的函数本身
+
+    return function (...args) {
+        // 拼接参数
+        const newArgs = bindArgs.concat(args)
+        return self.apply(context, newArgs)
     }
 }
 ```
