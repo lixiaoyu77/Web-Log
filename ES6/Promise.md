@@ -242,3 +242,34 @@ Promise
 
 
 # 扩展
+#### promise 忘了catch 的话，怎么捕获异常？
+如果在 Promise 链中忘记了 catch 处理错误，并且错误向上传递到了整个链的末尾，那么可以通过在 Promise 链的最后添加一个全局的 catch 处理来捕获未处理的异常。这可使用 监听全局事件 **unhandledrejection 事件**来实现  
+
+---设置全局捕获 vue里的config.errorHandler   
+```javascript
+// 监听未处理的 Promise rejection
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  // 这里可以添加自定义的错误处理逻辑
+  // process.exit(1); // 可选择退出进程
+});
+
+// 创建一个 Promise 链，但忘记添加 catch 处理
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error('Oops! Something went wrong.'));
+  }, 1000);
+});
+// 在链的最后添加全局的 catch 处理
+promise.then(result => {
+  console.log(result);
+});
+// 注意：这里并没有使用 catch 处理错误
+```
+全局unhandledRejection 事件会监听未处理的 Promise rejection，然后输出错误信息
+
+
+
+
+
+
