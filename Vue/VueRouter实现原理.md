@@ -236,7 +236,7 @@ export default [
 beforeRouteUpdate、beforeRouteEnter、beforeRouteLeave  
 这三个钩子都有三个参数 ∶to、from、next  
 beforeRouteEnter∶ 进入组件前触发  
-beforeRouteUpdate∶ 当前地址改变并且改组件被复用时触发，举例来说，带有动态参数的路径 foo/∶id，在 /foo/1 和 /foo/2 之间跳转的时候，由于会渲染同样的 foa 组件，这个钩子在这种情况下就会被调用  
+beforeRouteUpdate∶ 当前地址改变并且改组件被复用时触发，举例来说，带有动态参数的路径 foo/∶id，在 /foo/1 和 /foo/2 之间跳转的时候，由于会渲染同样的 foo 组件，这个钩子在这种情况下就会被调用  
 beforeRouteLeave∶ 离开组件被调用  
 **注意点** beforeRouteEnter 组件内还访问不到 this，因为该守卫执行前组件实例还没有被创建，需要传一个回调给 next 来访问
 ```javascript
@@ -262,9 +262,28 @@ beforeRouteEnter(to, from, next) {
 导航被确认  
 调用全局后置钩子的 afterEach 钩子  
 触发 DOM 更新（mounted）  
-执行 beforeRouteEnter 守卫中传给 next 的回调函数  
+执行 beforeRouteEnter 守卫中传给 next 的回调函数
+
+### 导航行为被触发到导航完成的整个过程
+导航行为被触发，此时导航未被确认  
+在失活的组件里调用离开守卫 beforeRouteLeave  
+调用全局的 beforeEach 守卫  
+在重用的组件里调用 beforeRouteUpdate 守卫(2.2+)  
+在路由配置里调用 beforeEnter  
+解析异步路由组件（如果有）  
+在被激活的组件里调用 beforeRouteEnter  
+调用全局的 beforeResolve 守卫（2.5+），标示解析阶段完成  
+导航被确认  
+调用全局的 afterEach 钩子  
+非重用组件，开始组件实例的生命周期：beforeCreate&created、beforeMount&mounted  
+触发 DOM 更新  
+用创建好的实例调用 beforeRouteEnter 守卫中传给 next 的回调函数  
+导航完成
+
+
 ### 触发钩子的完整顺序
-路由导航、keep-alive、和组件生命周期钩子结合起来的，触发顺序，假设是从 a 组件离开，第一次进入 b 组件 ∶  
+**路由导航、keep-alive、和组件生命周期钩子**结合起来的，触发顺序  
+假设是从 a 组件离开，第一次进入 b 组件 ∶    
 beforeRouteLeave：路由组件的组件离开路由前钩子，可取消路由离开  
 beforeEach：路由全局前置守卫，可用于登录验证、全局路由 loading 等  
 beforeEnter：路由独享守卫  
@@ -278,10 +297,12 @@ deactivated：离开缓存组件 a，或者触发 a 的 beforeDestroy 和 destro
 mounted：访问/操作 dom  
 activated：进入缓存组件，进入 a 的嵌套子组件（如果有的话）  
 执行 beforeRouteEnter 回调函数 next  
+
+
 ### 导航行为被触发到导航完成的整个过程 ?
 
 ## Vue-router 跳转和 location.href 有什么区别
-使用 location.href= /url来跳转，简单方便，但是刷新了页面
-使用 history.pushState( /url ) ，无刷新页面，静态跳转
-引进 router ，然后使用 router.push( /url ) 来跳转，使用了 diff 算法，实现了按需加载，减少了 dom 的消耗  
+1. 使用 location.href= /url来跳转，简单方便，但是刷新了页面
+2. 使用 history.pushState( /url ) ，无刷新页面，静态跳转
+3. 引进 router ，然后使用 router.push( /url ) 来跳转，使用了 diff 算法，实现了按需加载，减少了 dom 的消耗  
 其实使用 router 跳转和使用history.pushState()没什么差别，vue-router(history模式)就是用了 history.pushState()
