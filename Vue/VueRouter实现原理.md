@@ -101,7 +101,7 @@ watch: {
   }
 },
 ```
-2. window.location.hash 读取#值 window.location.hash 的值可读可写，读取来判断状态是否改变，写入时可以在不重载网页的前提下，添加一条历史访问记录。
+2. window.location.hash 读取#值 window.location.hash 的值可读可写，读取来判断状态是否改变，写入时可以在不重载网页的前提下，添加一条历史访问记录  hashchange
 
 
 ## 如何定义动态路由？如何获取传过来的动态参数？
