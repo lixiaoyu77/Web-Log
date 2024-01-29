@@ -177,8 +177,8 @@ params 刷新会丢失 params 里面的数据
 
 #### vue-router 全局路由钩子
 1. router.beforeEach 全局前置守卫 进入路由之前
-beforeEach（判断是否登录了，没登录就跳转到登录页）
 ```javascript
+//  beforeEach（判断是否登录了，没登录就跳转到登录页）
 router.beforeEach((to, from, next) => {
   let ifInfo = Vue.prototype.$common.getSession("userData"); // 判断是否登录的存储信息
   if (!ifInfo) {
@@ -207,10 +207,9 @@ router.beforeResolve((to, from, next) => {
 });
 ```
 
-
 3. router.afterEach 全局后置钩子 进入路由之后  
-afterEach （跳转之后滚动条回到顶部）
 ```javascript
+// afterEach （跳转之后滚动条回到顶部）
 router.afterEach((to, from) => {
   // 跳转之后滚动条回到顶部
   window.scrollTo(0, 0);
