@@ -1,4 +1,5 @@
 # bind、call和apply是JavaScript中用于改变函数执行时的上下文，简而言之就是改变函数运行时的this指向
+
 ```javascript
 var name = "lucy";
 var obj = {
