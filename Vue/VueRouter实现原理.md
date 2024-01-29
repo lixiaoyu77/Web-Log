@@ -37,12 +37,11 @@ $route.meta：路由元信息
 
 
 ## vueRouter 有哪几种导航守卫？
-1. 全局前置/钩子：beforeEach、beforeR-esolve、afterEach
+1. 全局前置/钩子：beforeEach、beforeResolve、afterEach
 2. 路由独享的守卫：beforeEnter
 3. 组件内的守卫：beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave
 
 ## 解释 vueRouter 的完整的导航解析流程
-
 1. 导航被触发
 2. 在失活的组件里调用离开守卫
 3. 调用全局的 beforeEach 守卫
