@@ -1,5 +1,6 @@
 # bind、call和apply是JavaScript中用于改变函数执行时的上下文，简而言之就是改变函数运行时的this指向
 
+#### 例
 ```javascript
 var name = "lucy";
 var obj = {
@@ -11,9 +12,9 @@ var obj = {
 obj.say(); // martin，this 指向 obj 对象
 setTimeout(obj.say,0); // lucy，this 指向 window 对象
 ```
-在定时器中是作为回调函数来执行的，因此回到主栈执行时是在**全局执行上下文的环境**中执行的，这时this指向window，所以输出lucy
+在定时器中是作为回调函数来执行的，因此回到主栈执行时是在**全局执行上下文的环境**中执行的，this指向window，输出lucy  
 
-实际需要的是this指向obj对象，这时候就需要该改变this指向了
+实际需要this指向obj对象，这时候就需要该改变this指向了
 ```javascript
 setTimeout(obj.say.bind(obj),0); //martin，this指向obj对象
 ```
