@@ -36,39 +36,68 @@ const boundFunction = originalFunction.bind({ name: 'Alice' });
 boundFunction(); // 输出: Alice
 ```
 
+
+## apply
+apply接受两个参数，**第一个参数**是this的指向，**第二个参数**是函数接受的参数，以**数组**的形式传入  
+改变this指向后原函数会立即执行，且此方法只是临时改变this指向一次
+```js
+function.apply(thisValue, [arg1, arg2, ...]);
+```
+```javascript
+function fn(...args){
+    console.log(this,args);
+}
+let obj = {
+    myname:"张三"
+}
+
+fn.apply(obj,[1,2]); // this会变成传入的obj，传入的参数必须是一个数组；
+fn(1,2) // this指向window
+```
+#### 当第一个参数为null、undefined的时候，默认指向window(在浏览器中)
+```js
+fn.apply(null,[1,2]);  // this指向window
+fn.apply(undefined,[1,2]);  // this指向window
+```
+
 ## call
-call 方法允许你调用一个函数，显式设置函数执行时的 this 值，并传递一个参数列表。
+call方法的第一个参数也是this的指向，后面传入的是一个参数列表  
+
+跟apply一样，改变this指向后原函数会立即执行，且此方法只是临时改变this指向一次
 语法：
 ```js
 function.call(thisValue, arg1, arg2, ...);
 ```
 ```javascript
-const printName = function(greeting) {
-  console.log(greeting + ' ' + this.name);
-};
-const person = { name: 'Bob' };
-printName.call(person, 'Hello'); // 输出: Hello Bob
-```
+function fn(...args){
+    console.log(this,args);
+}
+let obj = {
+    myname:"张三"
+}
 
-## apply
-apply 方法与 call 类似，但是参数列表是通过一个数组传递的。  
-语法：
+fn.call(obj,1,2); // this会变成传入的obj，传入的参数必须是一个数组；
+fn(1,2) // this指向window
+```
+#### 同样的，当第一个参数为null、undefined的时候，默认指向window(在浏览器中)
 ```js
-function.apply(thisValue, [arg1, arg2, ...]);
+fn.call(null,[1,2]); // this指向window
+fn.call(undefined,[1,2]); // this指向window
 ```
 
-```javascript
-const numbers = [1, 2, 3, 4, 5];
-const sum = function() {
-  return this.reduce((acc, val) => acc + val, 0);
-};
-const result = sum.apply(numbers); // 输出: 15
-```
+
 
 # 总结
 1. bind 用于创建一个新函数，固定 this 值，并且可以稍后调用
 2. call 用于调用函数，设置 this 值，并传递参数列表
 3. apply 与 call 类似，但参数列表是通过数组传递的
+
+三者都可以改变函数的this对象指向
+三者第一个参数都是this要指向的对象，如果如果没有这个参数或参数为undefined或null，则默认指向全局window
+三者都可以传参，但是apply是数组，而call是参数列表，且apply和call是一次性传入参数，而bind可以分为多次传入
+bind是返回绑定this之后的函数，apply、call 则是立即执行
+
+
 
 # 扩展
 ## 实现一个bind
