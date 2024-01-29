@@ -10,7 +10,7 @@ history 模式的实现，主要是 HTML5 标准发布的两个 API，pushState 
 3. 兼容性上，hash 可以支持低版本浏览器和 IE
 
 
-## router 和route 的区别
+## router 和 route
 ### $route 对象 当前的路由信息，包含了当前 URL 解析得到的信息（path，params，hash，query，fullPath，matched，name）  
 ```javascript
 $route.path：字符串，对应当前路由的路径，总是解析为绝对路径，如 "/foo/bar"。
