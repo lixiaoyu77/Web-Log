@@ -1,5 +1,10 @@
 # Vue 的路由实现原理
 
+## Vue-router提供了三种路由模式：
+1. hash：默认值。路由从浏览器地址栏中的 hash 部分获取路径，改变路径也是改变的 hash 部分。该模式兼容性最好  
+2. history：路由从浏览器地址栏的location.pathname中获取路径，改变路径使用的 H5 的history api。该模式可以让地址栏最友好，但是需要浏览器支持history api  
+3. abstract：路由从内存中获取路径，改变路径也只是改动内存中的值。这种模式通常应用到非浏览器环境中  
+
 ## hash 模式和 history 模式的实现原理
 hash 模式后面 hash 值的变化，不会导致浏览器向服务器发出请求，浏览器不发出请求，就不会刷新页面；通过监听 hashchange 事件可以知道 hash 发生了哪些变化，然后根据 hash 变化来实现更新页面部分内容的操作。
 
@@ -35,12 +40,6 @@ $route.meta：路由元信息
 2. go：页面路由跳转前进或者后退
 3. replace：替换当前的页面，不会向 history 栈添加一个新的记录
 
-
-## vueRouter 有哪几种导航守卫？
-1. 全局前置/钩子：beforeEach、beforeResolve、afterEach
-2. 路由独享的守卫：beforeEnter
-3. 组件内的守卫：beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave
-
 ## 解释 vueRouter 的完整的导航解析流程
 1. 导航被触发
 2. 在失活的组件里调用离开守卫
@@ -54,12 +53,6 @@ $route.meta：路由元信息
 10. 调用全局的 afterEach 钩子
 11. 触发 DOM 更新
 12. 用创建好的实例调用 beforeRouteEnter 守卫中传给 next 的回调函数
-
-# Vuerouter提供了三种路由模式：
-
-1. hash：默认值。路由从浏览器地址栏中的 hash 部分获取路径，改变路径也是改变的 hash 部分。该模式兼容性最好  
-2. history：路由从浏览器地址栏的location.pathname中获取路径，改变路径使用的 H5 的history api。该模式可以让地址栏最友好，但是需要浏览器支持history api  
-3. abstract：路由从内存中获取路径，改变路径也只是改动内存中的值。这种模式通常应用到非浏览器环境中  
 
 ## Vue-Router 的懒加载如何实现
 ### 非懒加载
@@ -156,16 +149,12 @@ profileClick(){
 ```javascript
 // 方法1：
 <router-link :to="{ name: 'users', query: { uname: james }}">按钮</router-link>
-
 // 方法2：
 this.$router.push({ name: 'users', query:{ uname:james }})
-
 // 方法3：
 <router-link :to="{ path: '/user', query: { uname:james }}">按钮</router-link>
-
 // 方法4：
 this.$router.push({ path: '/user', query:{ uname:james }})
-
 // 方法5：
 this.$router.push('/user?uname=' + jsmes)
 ```
@@ -184,6 +173,12 @@ params 刷新会丢失 params 里面的数据
 ## Vue-router 路由钩子在生命周期的体现
 ### Vue-Router 导航守卫
 有的时候，需要通过路由来进行一些操作，比如最常见的登录权限验证，当用户满足条件时，才让其进入导航，否则就取消跳转，并跳到登录页面让其登录。 为此有很多种方法可以植入路由的导航过程：全局的，单个路由独享的，或者组件级的  
+
+### Vue-Router 有哪几种导航守卫？
+1. 全局前置/钩子：beforeEach、beforeResolve、afterEach
+2. 路由独享的守卫：beforeEnter
+3. 组件内的守卫：beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave
+
 #### vue-router 全局路由钩子
 1. router.beforeEach 全局前置守卫 进入路由之前
 beforeEach（判断是否登录了，没登录就跳转到登录页）
