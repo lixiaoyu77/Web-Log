@@ -174,10 +174,6 @@ params 刷新会丢失 params 里面的数据
 ### Vue-Router 导航守卫
 有的时候，需要通过路由来进行一些操作，比如最常见的登录权限验证，当用户满足条件时，才让其进入导航，否则就取消跳转，并跳到登录页面让其登录。 为此有很多种方法可以植入路由的导航过程：全局的，单个路由独享的，或者组件级的  
 
-### Vue-Router 有哪几种导航守卫？
-1. 全局前置/钩子：beforeEach、beforeResolve、afterEach
-2. 路由独享的守卫：beforeEnter
-3. 组件内的守卫：beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave
 
 #### vue-router 全局路由钩子
 1. router.beforeEach 全局前置守卫 进入路由之前
@@ -200,7 +196,19 @@ router.beforeEach((to, from, next) => {
   }
 });
 ```
-2. router.afterEach 全局后置钩子 进入路由之后  
+
+2. router.beforeResolve 在导航被确认之前，也就是在所有组件内守卫和异步组件被解析之后。
+```js
+router.beforeResolve((to, from, next) => {
+  // 在导航被确认之前执行一些逻辑
+  // 可以用于确保异步组件已经解析完毕
+  // 这个钩子是在组件内守卫和异步组件被解析之后调用的
+  next();
+});
+```
+
+
+3. router.afterEach 全局后置钩子 进入路由之后  
 afterEach （跳转之后滚动条回到顶部）
 ```javascript
 router.afterEach((to, from) => {
