@@ -1,4 +1,3 @@
-
 **async 是异步的意思，await则可以理解为 async wait。所以可以理解async就是用来声明一个异步方法，而await是用来等待异步方法执行**
 
 # async
