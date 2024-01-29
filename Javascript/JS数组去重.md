@@ -100,7 +100,7 @@ function unique(arr) {
     }
 ```
 
-8. 使用reduce+includers
+8. 使用reduce+includes
 ```javascript
 function unique(arr) {
     return arr.reduce((pre, cur) => {
