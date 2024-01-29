@@ -22,9 +22,8 @@ setTimeout(obj.say.bind(obj),0); //martin，this指向obj对象
 # bind、call和apply的区别
 
 ## bind
-bind 方法创建一个新函数，将其 this 值设置为传递给 bind 方法的值。  
-bind 不会立即调用函数，而是返回一个新函数。这个新函数可以稍后调用，并且它的 this 值会保持绑定的值。   
-语法：
+bind 方法创建一个新函数，将其 this 值设置为传递给 bind 方法的值   
+bind 不会立即调用函数，而是返回一个新函数。这个新函数可以稍后调用，并且它的 this 值会保持绑定的值     
 ```js 
 newFunction = originalFunction.bind(thisValue); 
 ```
@@ -67,9 +66,9 @@ const result = sum.apply(numbers); // 输出: 15
 ```
 
 # 总结
-1. bind 用于创建一个新函数，固定 this 值，并且可以稍后调用。
-2. call 用于调用函数，设置 this 值，并传递参数列表。
-3. apply 与 call 类似，但参数列表是通过数组传递的。
+1. bind 用于创建一个新函数，固定 this 值，并且可以稍后调用
+2. call 用于调用函数，设置 this 值，并传递参数列表
+3. apply 与 call 类似，但参数列表是通过数组传递的
 
 # 扩展
 ## 实现一个bind
