@@ -9,6 +9,7 @@ history 模式的实现，主要是 HTML5 标准发布的两个 API，pushState 
 2. 刷新页面时，hash 模式可以正常加载到 hash 值对应的页面，而 history 没有处理的话，会返回 404，一般需要后端将所有页面都配置重定向到首页路由
 3. 兼容性上，hash 可以支持低版本浏览器和 IE
 
+
 ## router 和route 的区别
 ### $route 对象 当前的路由信息，包含了当前 URL 解析得到的信息（path，params，hash，query，fullPath，matched，name）  
 ```javascript
@@ -22,14 +23,14 @@ $route.name：当前路径名字
 $route.meta：路由元信息
 ```
 
- $route 对象出现在多个地方:
+ $route 对象出现在多个地方:  
 1. 组件内的 this.$route 和 route watcher 回调（监测变化处理）
 2. router.match(location) 的返回值
 3. scrollBehavior 方法的参数
 4. 导航钩子的参数，例如 router.beforeEach 导航守卫的钩子函数中，to 和 from 都是这个路由信息对象 
 
 ### $router 对象是全局路由的实例，是 router 构造方法的实例，包括了路由的跳转方法，钩子函数...
-   $router 对象常用的方法有  
+ $router 对象常用的方法有  
 1. push：向 history 栈添加一个新的记录
 2. go：页面路由跳转前进或者后退
 3. replace：替换当前的页面，不会向 history 栈添加一个新的记录
