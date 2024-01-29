@@ -22,7 +22,6 @@ async function f(){
 }
 f().then(v => console.log(v)) // 123
 // 不管await后面跟着的是什么，await都会阻塞后面的代码
-
 async function fn1 (){
     console.log(1) // 1
     await fn2() 
