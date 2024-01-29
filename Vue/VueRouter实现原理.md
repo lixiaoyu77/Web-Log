@@ -251,20 +251,6 @@ beforeRouteEnter(to, from, next) {
 
 ## Vue 路由钩子在生命周期函数的体现
 ### 完整的路由导航解析流程（不包括其他生命周期）
-触发进入其他路由  
-调用要离开路由的组件守卫 beforeRouteLeave  
-调用局前置守卫 ∶ beforeEach  
-在重用的组件里调用 beforeRouteUpdate  
-调用路由独享守卫 beforeEnter  
-解析异步路由组件  
-在将要进入的路由组件中调用 beforeRouteEnter  
-调用全局解析守卫 beforeResolve  
-导航被确认  
-调用全局后置钩子的 afterEach 钩子  
-触发 DOM 更新（mounted）  
-执行 beforeRouteEnter 守卫中传给 next 的回调函数
-
-### 导航行为被触发到导航完成的整个过程
 导航行为被触发，此时导航未被确认  
 在失活的组件里调用离开守卫 beforeRouteLeave  
 调用全局的 beforeEach 守卫  
@@ -279,7 +265,6 @@ beforeRouteEnter(to, from, next) {
 触发 DOM 更新  
 用创建好的实例调用 beforeRouteEnter 守卫中传给 next 的回调函数  
 导航完成
-
 
 ### 触发钩子的完整顺序
 **路由导航、keep-alive、和组件生命周期钩子**结合起来的，触发顺序  
