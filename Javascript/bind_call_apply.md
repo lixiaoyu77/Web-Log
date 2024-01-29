@@ -22,18 +22,27 @@ setTimeout(obj.say.bind(obj),0); //martin，this指向obj对象
 # bind、call和apply的区别
 
 ## bind
-bind 方法创建一个新函数，将其 this 值设置为传递给 bind 方法的值   
+
+bind方法和call很相似，第一参数也是this的指向，后面传入的也是一个参数列表(但是这个参数列表可以分多次传入)
+
+改变this指向后不会立即执行，而是返回一个永久改变this指向的函数
+
 bind 不会立即调用函数，而是返回一个新函数。这个新函数可以稍后调用，并且它的 this 值会保持绑定的值     
 ```js 
 newFunction = originalFunction.bind(thisValue); 
 ```
 
 ```javascript
-const originalFunction = function() {
-  console.log(this.name);
-};
-const boundFunction = originalFunction.bind({ name: 'Alice' });
-boundFunction(); // 输出: Alice
+function fn(...args){
+    console.log(this,args);
+}
+let obj = {
+    myname:"张三"
+}
+
+const bindFn = fn.bind(obj); // this 也会变成传入的obj ，bind不是立即执行需要执行一次
+bindFn(1,2) // this指向obj
+fn(1,2) // this指向window
 ```
 
 
@@ -62,7 +71,6 @@ fn.apply(undefined,[1,2]);  // this指向window
 
 ## call
 call方法的第一个参数也是this的指向，后面传入的是一个参数列表  
-
 跟apply一样，改变this指向后原函数会立即执行，且此方法只是临时改变this指向一次
 语法：
 ```js
