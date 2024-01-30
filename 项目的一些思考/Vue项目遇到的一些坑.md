@@ -10,8 +10,7 @@ target：目标对象
 key：要添加的属性名  
 value：要添加的属性值  
 **Vue.set** 的主要用途: 解决直接给响应式对象新增属性时，Vue 无法追踪的问题。
-
-```vue
+```js
 <template>
   <div>
     <p>{{ user.name }}</p>
