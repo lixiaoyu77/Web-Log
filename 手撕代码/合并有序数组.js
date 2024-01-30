@@ -33,7 +33,7 @@ function mergeSort(arr1,arr2){
 }
 
 
-const arr = mergeSort(a1,a2);
+const arr = mergeSort(a1,a2);  //复杂度O(n+m);
 console.log(arr)
 
 // 使用方法 concat/sort
