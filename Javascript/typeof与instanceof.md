@@ -21,6 +21,7 @@ instanceof 运算符用于检测构造函数的 prototype 属性是否出现在�
 ```js
 // object为实例对象，constructor为构造函数
 object instanceof constructor
+[]  instanceof Array; // true
 ```
 
 构造函数通过new可以实例对象，instanceof能判断这个对象是否是之前那个构造函数生成的对象
