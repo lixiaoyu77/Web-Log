@@ -4,11 +4,11 @@ React 16.8 引入的一项特性，它们允许在函数组件中使用状态(st
 
 ### React Hook 解决了一些问题，其中最主要的是：
 
-1. 复用状态逻辑： 使用 Hook，你可以将组件的状态逻辑提取到可复用的函数中，而不必使用类组件中的高阶组件或渲染属性。
+1. 复用状态逻辑： 使用 Hook，可以将组件的状态逻辑提取到可复用的函数中，而不必使用类组件中的高阶组件或渲染属性
 
-2. 更易于理解和测试： Hook 使得组件中的逻辑更加分离和清晰，易于理解和测试。
+2. 更易于理解和测试： Hook 使得组件中的逻辑更加分离和清晰，易于理解和测试
 
-3. 减少了组件层级： 在类组件中，一些逻辑可能需要通过嵌套的组件传递，而使用 Hook，可以将逻辑提取到同一组件中，减少了组件层级。
+3. 减少了组件层级： 在类组件中，一些逻辑可能需要通过嵌套的组件传递，而使用 Hook，可以将逻辑提取到同一组件中，减少了组件层级
 
 ### React Hook 编写的用户鉴权组件的简单例子：
 
@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
     // 模拟异步的用户鉴权过程，auth是一个返回Promise的函数
     const authenticateUser = async () => {
       try {
-        const result = await auth() // 假设auth是一个返回Promise的用户鉴权函数
+        const result = await auth() // 假设auth是一个返回Promise的用户函数
         setIsAuthenticated(result)
       } catch (error) {
         console.error('Authentication failed:', error)
