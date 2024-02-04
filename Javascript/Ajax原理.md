@@ -29,13 +29,13 @@ xhr.open(method, url, [async][, user][, password])
 
 参数说明：
 
-1.  method：表示当前的请求方式，常见的有 GET、POST
-2.  url：服务端地址
-3.  async：布尔值，表示是否异步执行操作，默认为 true
-4.  user: 可选的用户名用于认证用途；默认为`null
-5.  password: 可选的密码用于认证用途，默认为`null
+- method：表示当前的请求方式，常见的有 GET、POST
+- url：服务端地址
+- async：布尔值，表示是否异步执行操作，默认为 true
+- user: 可选的用户名用于认证用途；默认为`null
+- password: 可选的密码用于认证用途，默认为`null
 
-6.  给服务端发送数据
+3.  给服务端发送数据  
     通过 XMLHttpRequest 对象的 send() 方法，将客户端页面的数据发送给服务端
 
 ```javascript
@@ -46,11 +46,10 @@ body: 在 XHR 请求中要发送的数据体，如果不传递数据则为 null
 
 如果使用 GET 请求发送数据的时候，需要注意如下：
 
-1.  将请求数据添加到 open()方法中的 url 地址中
-2.  发送请求数据中的 send()方法中参数设置为 null
-
-3.  绑定 onreadystatechange 事件
-    onreadystatechange 事件用于监听服务器端的通信状态，主要监听的属性为 XMLHttpRequest.readyStatea
+- 将请求数据添加到 open()方法中的 url 地址中
+- 发送请求数据中的 send()方法中参数设置为 null
+- 绑定 onreadystatechange 事件
+  onreadystatechange 事件用于监听服务器端的通信状态，主要监听的属性为 XMLHttpRequest.readyStatea
 
 关于 XMLHttpRequest.readyState 属性有五个状态
 ![五个状态](../img/readystate.png)
