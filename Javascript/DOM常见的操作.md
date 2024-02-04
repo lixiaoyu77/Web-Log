@@ -47,3 +47,8 @@
 在这个例子中，点击按钮时，JavaScript 通过 DOM 获取到 id 为 myHeading 的元素，并修改了它的 innerHTML 属性，从而改变了页面上的文本内容。这展示了 DOM 的基本用法。
 
 ## 扩展
+
+#### document.write 和 innerHTML 的区别？
+
+- document.write 只能重绘整个页面
+- innerHTML 可以重绘页面的一部分
