@@ -1,16 +1,19 @@
+## 强制转换（显示转换）
+
 显示转换，即我们很清楚可以看到这里发生了类型的转变，常见的方法有：
 
+```js
 Number()
 parseInt()
 String()
 Boolean()
-#Number()
-将任意类型的值转化为数值
+```
 
-先给出类型转换规则：
+#### Number() 将任意类型的值转化为数值
 
-实践一下：
+类型转换规则：
 
+```js
 Number(324) // 324
 
 // 字符串：如果可以被解析为数值，则转换为相应的数值
@@ -33,12 +36,15 @@ Number(undefined) // NaN
 Number(null) // 0
 
 // 对象：通常转换成 NaN(除了只包含单个数值的数组)
-Number({a: 1}) // NaN
+Number({ a: 1 }) // NaN
 Number([1, 2, 3]) // NaN
 Number([5]) // 5
+```
+
 从上面可以看到，Number 转换的时候是很严格的，只要有一个字符无法转成数值，整个字符串就会被转为 NaN
 
-#parseInt()
+#### parseInt()
+
 parseInt 相比 Number，就没那么严格了，parseInt 函数逐个解析字符，遇到不能转换的字符就停下来
 
 parseInt('32a3') //32
@@ -119,7 +125,6 @@ NaN
 '5' + null // "5null" #自动转换成数值
 除了+有可能把运算子转为字符串，其他运算符都会把运算子自动转成数值
 
-```JS
 '5' - '2' // 3
 '5' _ '2' // 10
 true - 1 // 0
@@ -130,5 +135,4 @@ false / '5' // 0
 'abc' - 1 // NaN
 null + 1 // 1
 undefined + 1 // NaN
-// null 转为数值时，值为 0 。undefined 转为数值时，值为 NaN
-```
+null 转为数值时，值为 0 。undefined 转为数值时，值为 NaN
