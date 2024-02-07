@@ -48,9 +48,8 @@ class sub extends sup {
 
 ## 类组件
 
-在 React 中，类组件是基于 ES6 的规范实现的，继承 React.Component，因此如果用到 constructor 就必须写 super() 才初始化 this
-
-这时候，在调用 super() 的时候，我们一般都需要传入 props 作为参数，如果不传进去，React 内部也会将其定义在组件实例中
+在 React 中，类组件是基于 ES6 的规范实现的，继承 React.Component，因此如果用到 constructor 就必须写 super() 才初始化 this  
+这时候在调用 super() 的时候，我们一般都需要传入 props 作为参数，如果不传进去，React 内部也会将其定义在组件实例中
 
 ```jsx
 // React 内部
@@ -68,8 +67,7 @@ class HelloMessage extends React.Component {
 }
 ```
 
-但是也不建议使用 super() 代替 super(props)
-
+但是也不建议使用 super() 代替 super(props)  
 因为在 React 会在类组件构造函数生成实例后再给 this.props 赋值，所以在不传递 props 在 super 的情况下，调用 this.props 为 undefined，如下情况：
 
 ```jsx
@@ -98,12 +96,6 @@ class Button extends React.Component {
 
 ## 总结
 
-在 React 中，类组件基于 ES6，所以在 constructor 中必须使用 super
-
-在调用 super 过程，无论是否传入 props，React 内部都会将 porps 赋值给组件实例 porps 属性中
-
+在 React 中，类组件基于 ES6，所以在 constructor 中必须使用 super  
+在调用 super 过程，无论是否传入 props，React 内部都会将 porps 赋值给组件实例 porps 属性中  
 如果只调用了 super()，那么 this.props 在 super() 和构造函数结束之间仍是 undefined
-
-```
-
-```
