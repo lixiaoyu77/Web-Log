@@ -1,7 +1,6 @@
 ## setState
 
 一个组件的显示形态可以由数据状态和外部参数所决定，而数据状态就是 state
-
 当需要修改里面的值的状态需要通过调用 setState 来改变，从而达到更新组件内部数据的作用
 
 ```jsx
@@ -33,9 +32,8 @@ export default class App extends Component {
 }
 ```
 
-通过点击按钮触发 onclick 事件，执行 this.setState 方法更新 state 状态，然后重新执行 render 函数，从而导致页面的视图更新
-
-如果直接修改 state 的状态，如下：
+通过点击按钮触发 onclick 事件，执行 this.setState 方法更新 state 状态，然后重新执行 render 函数，从而导致页面的视图更新  
+如果直接修改 state 的状态
 
 ```jsx
 changeText() {
@@ -43,13 +41,11 @@ this.state.message = "你好啊,李银河";
 }
 ```
 
-我们会发现页面并不会有任何反应，但是 state 的状态是已经发生了改变
-
-这是因为 React 并不像 vue2 中调用 Object.defineProperty 数据响应式或者 Vue3 调用 Proxy 监听数据的变化
-
+页面并不会有任何反应，但是 state 的状态是已经发生了改变
+这是因为 React 并不像 vue2 中调用 Object.defineProperty 数据响应式或者 Vue3 调用 Proxy 监听数据的变化  
 必须通过 setState 方法来告知 react 组件 state 已经发生了改变
 
-关于 state 方法的定义是从 React.Component 中继承，定义的源码如下：
+关于 state 方法的定义是从 React.Component 中继承
 
 ```jsx
 Component.prototype.setState = function (partialState, callback) {
@@ -70,8 +66,11 @@ Component.prototype.setState = function (partialState, callback) {
 
 在使用 setState 更新数据的时候，setState 的更新类型分成：
 
-异步更新
-同步更新 #异步更新
+- 异步更新
+- 同步更新
+
+#### 异步更新
+
 先举出一个例子：
 
 ```jsx
