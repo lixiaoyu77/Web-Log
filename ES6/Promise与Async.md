@@ -73,15 +73,20 @@ async function myAsyncFunction() {
 
 ### 总结
 
-setTimeout 主要用于设置定时器，而 Promise 和 async/await 则是更为强大和灵活的异步编程机制，用于处理复杂的异步操作，提高代码可读性和维护性。
-在实际应用中，async/await 通常被认为是更现代、更优雅的异步编程方式，因为它提供了更清晰、更直观的代码结构  
-Promise 仍然是底层的异步模型，但 async/await 是建立在 Promise 基础上的更高级的抽象
+- setTimeout 主要用于设置定时器，而 Promise 和 async/await 则是更为强大和灵活的异步编程机制，用于处理复杂的异步操作，提高代码可读性和维护性
+- async/await 本质上是基于 Promise 的一种语法糖，它使得异步代码更加清晰和类似于同步代码的写法
 
-## 扩展
+##### 在开发中，通常使用 async/await，因为它提供了更清晰、更具可读性的异步代码结构，使得代码更易于理解和维护
 
-在 JavaScript 中，Promise 和 async/await 并不是互斥的，而是可以搭配使用的。async/await 本质上是基于 Promise 的一种语法糖，它使得异步代码更加清晰和类似于同步代码的写法。
+1. 可读性和简洁性： async/await 语法让异步代码看起来更像同步代码，提高了代码的可读性。它使得开发者可以使用类似于同步代码的结构来处理异步操作，而无需嵌套多层回调。
 
-使用 Promise：
+2. 错误处理更简单： 使用 async/await 可以通过 try/catch 结构来捕获和处理异步操作中的错误，使得错误处理更加直观。
+
+3. 顺序执行和并发控制： async/await 更容易控制异步操作的执行顺序，以及实现一些并发控制的需求。通过 await 关键字，可以确保在一个异步操作完成后再执行下一个。
+
+### 扩展
+
+- JavaScript 中，Promise 和 async/await 并不是互斥的，而是可以搭配使用的。
 
 ```javascript
 function fetchData() {
@@ -106,24 +111,6 @@ fetchData()
   .catch((error) => {
     console.error(error)
   })
-```
-
-使用 async/await：
-
-```javascript
-function fetchData() {
-  return new Promise((resolve, reject) => {
-    // 异步操作
-    setTimeout(() => {
-      const success = true // 假设异步操作成功
-      if (success) {
-        resolve('Data fetched successfully')
-      } else {
-        reject('Operation failed')
-      }
-    }, 1000)
-  })
-}
 
 // 使用 async/await
 async function fetchDataAsync() {
@@ -134,15 +121,6 @@ async function fetchDataAsync() {
     console.error(error)
   }
 }
-
 // 调用
 fetchDataAsync()
 ```
-
-#### 在开发中，通常使用 async/await，因为它提供了更清晰、更具可读性的异步代码结构，使得代码更易于理解和维护。
-
-1. 可读性和简洁性： async/await 语法让异步代码看起来更像同步代码，提高了代码的可读性。它使得开发者可以使用类似于同步代码的结构来处理异步操作，而无需嵌套多层回调。
-
-2. 错误处理更简单： 使用 async/await 可以通过 try/catch 结构来捕获和处理异步操作中的错误，使得错误处理更加直观。
-
-3. 顺序执行和并发控制： async/await 更容易控制异步操作的执行顺序，以及实现一些并发控制的需求。通过 await 关键字，可以确保在一个异步操作完成后再执行下一个。
