@@ -54,10 +54,9 @@ promise
 
 ### async/await:
 
-async/await 是 ES2017（ES8）引入的一种异步编程语法糖，基于 Promise 构建  
-async 关键字用于声明一个异步函数，而 await 关键字用于在异步函数中等待 Promise 对象的解决  
-async/await 使得异步代码的编写更加类似于同步代码，提高了可读性和维护性  
-基本结构： async/await 是 ES2017（ES8）引入的异步编程语法糖。通过在函数前加 async 关键字定义异步函数，然后在异步操作前加 await 关键字等待其完成
+- async/await 是 ES2017（ES8）引入的一种异步编程语法糖，基于 Promise 构建
+- async 关键字用于声明一个异步函数，而 await 关键字用于在异步函数中等待 Promise 对象的解决
+- async/await 使得异步代码的编写更加类似于同步代码，提高了可读性和维护性
 
 ```javascript
 async function myAsyncFunction() {
@@ -70,10 +69,12 @@ async function myAsyncFunction() {
 }
 ```
 
-简洁性： async/await 语法使异步代码更加清晰、易读，并且避免了回调地狱的问题。它让异步代码看起来更像同步代码  
-错误处理： 使用 try/catch 结构来处理异步操作的成功和失败，使得错误处理更直观  
-顺序执行： async/await 更容易控制异步操作的执行顺序，通过 await 关键字，可以确保在一个异步操作完成后再执行下一个  
-返回值： async 函数总是返回一个 Promise 对象，可以通过 await 获取异步操作的结果
+##### 特点
+
+1. 简洁性： async/await 语法使异步代码更加清晰、易读，并且避免了回调地狱的问题。它让异步代码看起来更像同步代码
+2. 错误处理： 使用 try/catch 结构来处理异步操作的成功和失败，使得错误处理更直观
+3. 顺序执行： async/await 更容易控制异步操作的执行顺序，通过 await 关键字，可以确保在一个异步操作完成后再执行下一个
+4. 返回值： async 函数总是返回一个 Promise 对象，可以通过 await 获取异步操作的结果
 
 ### 总结
 
