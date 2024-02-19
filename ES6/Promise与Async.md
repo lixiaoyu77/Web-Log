@@ -1,10 +1,9 @@
-# Promise 和 async/await 都是用于处理 JavaScript 中的异步编程的工具
+# setTimeout、Promise 和 async/await 都是用于处理 JavaScript 中的异步编程的工具
 
 ### setTimeout
 
 - 一种基本的异步机制，通过指定延迟时间后执行回调函数来模拟异步操作
 - setTimeout 是一个用于设置在一定时间后执行特定代码的定时器函数
-- setTimeout 并不能真正解决异步编程的问题，因为它本质上是通过将回调函数放入任务队列，等待主线程执行完成后再执行，而不是通过 Promise 或 async/await 提供的更为灵活的异步处理方式
 
 ```javascript
 console.log('Start')
@@ -14,13 +13,18 @@ setTimeout(() => {
 console.log('End')
 ```
 
-### Promise:
+setTimeout 并不能真正解决异步编程的问题，因为它本质上是通过将回调函数放入任务队列，等待主线程执行完成后再执行，而不是通过 Promise 或 async/await 提供的更为灵活的异步处理方式
 
-Promise 是用于处理异步操作的对象，它表示一个可能会在未来完成或失败的异步操作。
-Promise 可以处于三个状态：pending（进行中）、fulfilled（已成功）和 rejected（已失败）。
-Promise 提供了 .then() 和 .catch() 方法，使得在异步操作完成或失败后执行相应的处理逻辑。
-Promise 更加灵活，可以解决回调地狱（Callback Hell）问题。
-使用 new Promise() 创建一个 Promise 实例。
+### Promise
+
+- Promise 是用于处理异步操作的对象，它表示一个可能会在未来完成或失败的异步操作
+- 使用 new Promise() 创建一个 Promise 实例
+- Promise 可以处于三个状态：
+  1. pending（进行中）
+  2. fulfilled（已成功）
+  3. rejected（已失败）
+- Promise 提供了 .then() 和 .catch() 方法，使得在异步操作完成或失败后执行相应的处理逻辑
+- Promise 更加灵活，可以解决回调地狱（Callback Hell）问题
 
 ```javascript
 const promise = new Promise((resolve, reject) => {
@@ -50,10 +54,10 @@ promise
 
 ### async/await:
 
-async/await 是 ES2017（ES8）引入的一种异步编程语法糖，基于 Promise 构建。
-async 关键字用于声明一个异步函数，而 await 关键字用于在异步函数中等待 Promise 对象的解决。
-async/await 使得异步代码的编写更加类似于同步代码，提高了可读性和维护性。
-基本结构： async/await 是 ES2017（ES8）引入的异步编程语法糖。通过在函数前加 async 关键字定义异步函数，然后在异步操作前加 await 关键字等待其完成。
+async/await 是 ES2017（ES8）引入的一种异步编程语法糖，基于 Promise 构建  
+async 关键字用于声明一个异步函数，而 await 关键字用于在异步函数中等待 Promise 对象的解决  
+async/await 使得异步代码的编写更加类似于同步代码，提高了可读性和维护性  
+基本结构： async/await 是 ES2017（ES8）引入的异步编程语法糖。通过在函数前加 async 关键字定义异步函数，然后在异步操作前加 await 关键字等待其完成
 
 ```javascript
 async function myAsyncFunction() {
