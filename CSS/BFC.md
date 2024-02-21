@@ -4,8 +4,7 @@
 
 1. 这个元素高度怎么没了？
 2. 这两栏布局怎么没法自适应？
-3. 这两个元素的间距怎么有点奇怪的样子？
-4. ......
+3. 这两个元素的间距怎么有点奇怪的样子？...
    原因是元素之间相互的影响，导致了意料之外的情况，这里就涉及到 BFC 概念
 
 ##### BFC（Block Formatting Context），即块级格式化上下文，它是页面中的一块渲染区域，并且有一套属于自己的渲染规则：
@@ -29,7 +28,7 @@ display 的值为 inline-block、inltable-cell、table-caption、table、inline-
 position 的值为 absolute 或 fixed #三、应用场景
 利用 BFC 的特性，我们将 BFC 应用在以下场景：
 
-#防止 margin 重叠（塌陷）
+### 防止 margin 重叠（塌陷）
 
 <style>
     p {
@@ -104,7 +103,8 @@ overflow: hidden;
 }
 实现效果如下：
 
-#自适应多栏布局
+### 自适应多栏布局
+
 这里举个两栏的布局
 
 <style>
