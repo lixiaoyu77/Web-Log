@@ -21,12 +21,13 @@
 
 触发 BFC 的条件包含不限于：
 
-根元素，即 HTML 元素
-浮动元素：float 值为 left、right
-overflow 值不为 visible，为 auto、scroll、hidden
-display 的值为 inline-block、inltable-cell、table-caption、table、inline-table、flex、inline-flex、grid、inline-grid
-position 的值为 absolute 或 fixed #三、应用场景
-利用 BFC 的特性，我们将 BFC 应用在以下场景：
+- 根元素，即 HTML 元素
+- 浮动元素：float 值为 left、right
+- overflow 值不为 visible，为 auto、scroll、hidden
+- display 的值为 inline-block、inltable-cell、table-caption、table、inline-table、- - flex、inline-flex、grid、inline-grid
+- position 的值为 absolute 或 fixed #三、应用场景
+
+## BFC 应用场景
 
 ### 防止 margin 重叠（塌陷）
 
