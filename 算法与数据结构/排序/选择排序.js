@@ -13,6 +13,8 @@ function selectionSort (arr) {
         minIndex = j                 // 将最小数的索引保存
       }
     }
+    // 使用解构赋值进行交换
+    // [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
     temp = arr[i]
     arr[i] = arr[minIndex]
     arr[minIndex] = temp
