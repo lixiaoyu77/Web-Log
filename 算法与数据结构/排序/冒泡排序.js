@@ -24,9 +24,17 @@ function sortPlus (arr) {
     let len = arr.length
 
     for (let i = 0; i < len - 1; i++) {
+        let swapped = false
         for (let j = 0; j < len - 1; j++) {
-            if (arr[j] > arr[j + 1])
+            if (arr[j] > arr[j + 1]) {
                 [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+                swapped = true
+            }
+
+            // 如果一趟遍历中没有发生交换，说明数组已经有序，可以提前结束排序
+            if (!swapped) {
+                break
+            }
         }
     }
     return arr
