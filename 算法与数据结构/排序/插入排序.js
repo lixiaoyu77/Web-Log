@@ -5,16 +5,24 @@
 
 // 插入排序
 function insertionSort (arr) {
-  const len = arr.length
-  let preIndex, current
-  for (let i = 1; i < len; i++) {
-    preIndex = i - 1
-    current = arr[i]
-    while (preIndex >= 0 && arr[preIndex] > current) {
-      arr[preIndex + 1] = arr[preIndex]
-      preIndex--
+  const n = arr.length
+
+  for (let i = 1; i < n; i++) {
+    let currentElement = arr[i]
+    let j = i - 1
+
+    // 将当前元素与已排序部分的元素逐个比较并移动
+    while (j >= 0 && arr[j] > currentElement) {
+      arr[j + 1] = arr[j]
+      j--
     }
-    arr[preIndex + 1] = current
+
+    // 将当前元素插入到合适的位置
+    arr[j + 1] = currentElement
   }
-  return arr
 }
+
+// 示例
+const arr = [64, 25, 12, 22, 11]
+insertionSort(arr)
+console.log("排序后的数组:", arr)
