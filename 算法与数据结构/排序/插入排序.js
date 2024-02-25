@@ -22,8 +22,8 @@ function insertionSort (arr) {
   }
   return arr
 }
-
-// 示例
 const arr = [64, 25, 12, 22, 11]
 insertionSort(arr)
 console.log("排序后的数组:", arr)
+
+// 时间复杂度为O(n^2)
