@@ -20,6 +20,7 @@ function insertionSort (arr) {
     // 将当前元素插入到合适的位置
     arr[j + 1] = currentElement
   }
+  return arr
 }
 
 // 示例
