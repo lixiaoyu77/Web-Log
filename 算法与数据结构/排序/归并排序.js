@@ -42,6 +42,7 @@ function merge (left, right) {
     }
 
     // 将剩余的元素加入结果数组
+    //while(leftindex<left.length){result.push(left[leftindex])}
     return result.concat(left.slice(leftIndex), right.slice(rightIndex))
 }
 
@@ -49,3 +50,6 @@ function merge (left, right) {
 const arr = [64, 25, 12, 22, 11]
 const sortedArr = mergeSort(arr)
 console.log("排序后的数组:", sortedArr)
+
+
+// 归并排序的时间复杂度是O(n log n)
