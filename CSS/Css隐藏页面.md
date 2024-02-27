@@ -85,10 +85,8 @@ clip-path: polygon(0px 0px,0px 0px,0px 0px,0px 0px);
 }
 特点：元素不可见，占据页面空间，无法响应点击事件
 
-#小结
-最常用的还是 display:none 和 visibility:hidden，其他的方式只能认为是奇招，它们的真正用途并不是用于隐藏元素，所以并不推荐使用它们
+## 区别
 
-#三、区别
 关于 display: none、visibility: hidden、opacity: 0 的区别，如下表所示：
 
 display: none visibility: hidden opacity: 0
@@ -99,3 +97,7 @@ display: none visibility: hidden opacity: 0
 transition 不支持 支持 支持
 子元素可复原 不能 能 不能
 被遮挡的元素可触发事件 能 能 不能
+
+## 小结
+
+最常用的还是 display:none 和 visibility:hidden，其他的方式只能认为是奇招，它们的真正用途并不是用于隐藏元素，所以不推荐使用它们
