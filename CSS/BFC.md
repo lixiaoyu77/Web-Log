@@ -25,7 +25,7 @@
 - 浮动元素：float 值为 left、right
 - overflow 值不为 visible，为 auto、scroll、hidden
 - display 的值为 inline-block、inltable-cell、table-caption、table、inline-table、- - flex、inline-flex、grid、inline-grid
-- position 的值为 absolute 或 fixed #三、应用场景
+- position 的值为 absolute 或 fixed
 
 ## BFC 应用场景
 
