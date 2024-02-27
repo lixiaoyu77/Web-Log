@@ -1,32 +1,27 @@
-一、选择器
-CSS 选择器是 CSS 规则的第一部分
+## 选择器
 
+CSS 选择器是 CSS 规则的第一部分  
 它是元素和其他部分组合起来告诉浏览器哪个 HTML 元素应当是被选为应用规则中的 CSS 属性值的方式
-
 选择器所选择的元素，叫做“选择器的对象”
 
-我们从一个 Html 结构开始
-
+```html
 <div id="box">
-    <div class="one">
-        <p class="one_1">
-        </p >
-        <p class="one_1">
-        </p >
-    </div>
-    <div class="two"></div>
-    <div class="two"></div>
-    <div class="two"></div>
+  <div class="one">
+    <p class="one_1"></p>
+    <p class="one_1"></p>
+  </div>
+  <div class="two"></div>
+  <div class="two"></div>
+  <div class="two"></div>
 </div>
-关于css属性选择器常用的有：
+```
 
-id 选择器（#box），选择 id 为 box 的元素
+#### css 属性选择器常用的有：
 
-类选择器（.one），选择类名为 one 的所有元素
-
-标签选择器（div），选择标签为 div 的所有元素
-
-后代选择器（#box div），选择 id 为 box 元素内部所有的 div 元素
+1. id 选择器（#box），选择 id 为 box 的元素
+2. 类选择器（.one），选择类名为 one 的所有元素
+3. 标签选择器（div），选择标签为 div 的所有元素
+4. 后代选择器（#box div），选择 id 为 box 元素内部所有的 div 元素
 
 子选择器（.one>one_1），选择父元素为.one 的所有.one_1 的元素
 
@@ -34,7 +29,7 @@ id 选择器（#box），选择 id 为 box 的元素
 
 群组选择器（div,p），选择 div、p 的所有元素
 
-还有一些使用频率相对没那么多的选择器：
+#### 其他
 
 伪类选择器
 :link ：选择未被访问的链接
@@ -73,13 +68,15 @@ id 选择器（#box），选择 id 为 box 的元素
 属性选择器
 [attribute*=value]：选择 attribute 属性值包含 value 的所有元素
 [attribute^=value]：选择 attribute 属性开头为 value 的所有元素
-[attribute$=value]：选择 attribute 属性结尾为 value 的所有元素 #二、优先级
-相信大家对 CSS 选择器的优先级都不陌生：
+[attribute$=value]：选择 attribute 属性结尾为 value 的所有元素
 
-内联 > ID 选择器 > 类选择器 > 标签选择器
+## 优先级
+
+**内联 > ID 选择器 > 类选择器 > 标签选择器**
 
 到具体的计算层⾯，优先级是由 A 、B、C、D 的值来决定的，其中它们的值计算规则如下：
 
+```css
 如果存在内联样式，那么 A = 1, 否则 A = 0
 
 B 的值等于 ID 选择器出现的次数
@@ -87,6 +84,7 @@ B 的值等于 ID 选择器出现的次数
 C 的值等于 类选择器 和 属性选择器 和 伪类 出现的总次数
 
 D 的值等于 标签选择器 和 伪元素 出现的总次数
+```
 
 这里举个例子：
 
