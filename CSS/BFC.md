@@ -31,21 +31,22 @@
 
 ### 防止 margin 重叠（塌陷）
 
+```html
 <style>
-    p {
-        color: #f55;
-        background: #fcc;
-        width: 200px;
-        line-height: 100px;
-        text-align:center;
-        margin: 100px;
-    }
+  p {
+    color: #f55;
+    background: #fcc;
+    width: 200px;
+    line-height: 100px;
+    text-align: center;
+    margin: 100px;
+  }
 </style>
 <body>
-    <p>Haha</p >
-    <p>Hehe</p >
+  <p>Haha</p>
+  <p>Hehe</p>
 </body>
-页面显示如下：
+```
 
 两个 p 元素之间的距离为 100px，发生了 margin 重叠（塌陷），以最大的为准，如果第一个 P 的 margin 为 80 的话，两个 P 之间的距离还是 100，以最大的为准
 
