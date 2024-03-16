@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Layout</title>
+</head>
+
+<body>
+  <div class="container">
+    <!-- 9宫格 -->
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">4</div>
+    <div class="flex-item">5</div>
+    <div class="flex-item">6</div>
+    <div class="flex-item">7</div>
+    <div class="flex-item">8</div>
+    <div class="flex-item">9</div>
+  </div>
+</body>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    /* 100%视口高度 */
+  }
+
+  .flex-item {
+    flex: 1 0 28%;
+    /* 1:1弹性比例, 0 不允许缩小, 28% 最大宽度 */
+    height: 100px;
+    margin: 10px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+</html>
